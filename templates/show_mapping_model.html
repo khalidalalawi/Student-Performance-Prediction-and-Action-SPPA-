@@ -1,0 +1,37 @@
+
+<!-- saved from url=(0119)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/show_mapping_model.html -->
+<html class=" xtzyed idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+        <br>
+
+
+        <h3 align="center"> {{course_id}} </h3>
+
+
+     
+
+  		{% for  i in mapping_model %}
+  		
+      {% endfor %}
+     <table id="table_1" align="center" class="table table-striped" style=" width: 85%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>
+     			<th> Assessment Name </th>
+     			<th> Activities Type </th>
+     			<th> Activities Topic </th>
+     			<th> Activities Name </th>
+     			<th> Activities Resources </th>
+
+
+         </tr><tr>
+
+
+  		<td> {{i[1]}}  </td>
+  		<td> {{i[3]}}  </td>
+  		<td> {{i[2]}}  </td>
+  		<td> {{i[4]}}  </td>
+  		<td> {{i[5]}}  </td>
+
+  		</tr></tbody></table>
+
+     <br><br>
+{% endblock %}<div id="319be041-0567-4d96-8bde-39411431af4f-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

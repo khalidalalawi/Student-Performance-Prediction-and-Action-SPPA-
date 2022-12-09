@@ -1,0 +1,147 @@
+
+<!-- saved from url=(0136)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/create_tla_after_adding_assessments.html -->
+<html class=" ewomknm idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+
+        <div class="container">
+
+
+
+
+      <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;create_tla&#39;)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+
+            <h2>     Create TLA </h2>
+      <div class="well" style="padding-top: 2px; padding-left: 2px; padding-right: 2px; padding-bottom: 2px; width: 50%; text-align: left; margin-left: auto; margin-right: auto;">
+      <h5 style="text-align: center;">Thank you, your CLO is added successfully.</h5>
+      </div>
+
+
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_course_id" id="course" required="required">
+
+
+            <option value="{{cityList [0]}}" selected=""> {{cityList[0]}}   </option>
+
+            </select>
+            <br><br>
+
+            <label style="width: 50%;">Activity Type:</label><br>
+            <input type="radio" id="Lecture" name="lecture_or_lab" value="Lecture" required="required">
+            <label style="font-weight: normal !important;" for="Lecture">Lecture</label><br>
+            <input type="radio" id="Lab" name="lecture_or_lab" value="Lab">
+            <label style="font-weight: normal !important;" for="Lab">Lab</label><br>
+            <input type="radio" id="Lab" name="lecture_or_lab" value="Other">
+            <label style="font-weight: normal !important;" for="Lab">Other</label>
+
+            <input type="text" name="other" id="defaultContactFormName" class="form-control mb-4" placeholder="Specify if you choose Other"> <br><br>
+            <br> <br>
+
+
+
+
+            <label>Activity Name:</label> <br>
+            <input type="text" required="required" name="lecture_lab_number" id="defaultContactFormName" class="form-control mb-4" placeholder="Activity Name eg. Lecture 1 or Lab 1"> <br><br>
+
+
+            <label>Topic/Subtopic:</label> <br>
+            <input type="text" name="tla_topic" required="required" id="defaultContactFormName" class="form-control mb-4" placeholder="Topic/Subtopic Name"> <br><br>
+
+            <label>Resources/Reference Material:</label> <br>
+            <textarea name="tla_Resources" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="4" placeholder="Resources/Reference Material"></textarea> <br><br>
+
+
+
+            <label for="courses">Parent TLA:</label><br>
+			<select name="parent_tla" id="clo">
+    		{% for    user in parent_tla_db %}
+            <option value="{{user[0]}}" selected=""> {{user[2]}} : {{user[3]}} [{{user[4]}}]   </option>
+    		{% endfor %}
+    		<option value="None" selected="">None</option>
+            </select>
+            <br><br>
+
+            <label>Allign to CLOs:</label><br>
+
+        	{% for    user in parent_clo_db %}
+
+                <input type="checkbox" id="{{user[0]}}" name="clo_checkbox" value="{{user[0]}}">
+                <label for="{{user[0]}}"> [Level {{user[2]}}] {{user[0]}}</label><br>
+
+            {% endfor %}
+
+        	<br><br>
+
+        	 <label for="courses">Allign TLA to Assessment:</label><br>
+            {% for    user in assessment_name %}
+
+                <input type="checkbox" id="{{user[0]}}" name="assessment_checkbox" value="{{user[0]}}">
+                <label for="{{user[0]}}"> {{user[0]}}</label><br>
+
+            {% endfor %}
+
+        	<br><br>
+
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Insert</button> <br> <br>
+        	<button class="btn btn-info btn-block" style="width: 50%" type="reset" name="reset" value="Reset">Reset</button>   <br><br>
+
+
+
+        	<div id="show_assessments" class="well" style="width: 50%; text-align: left; margin-left: auto; margin-right: auto;">
+
+            </div>
+            <br> <br>
+        </form>
+
+        </div>
+
+
+<script>
+
+//***********************************************************************************************************
+course_select = document.getElementById('course');
+div_select = document.getElementById('show_assessments');
+
+course_select.onchange = function(){
+ course = course_select.value;
+ fetch('tla/' + course).then(function(response){
+  response.json().then(function(data) {
+   optionHTML = '';
+
+   check_object_results=isEmptyObject(data.assessments_course)
+
+   if (check_object_results==true){
+   optionHTML ="There are no TLAs created yet for this course";
+   div_select.innerHTML =  optionHTML;
+
+   }
+   else
+   {
+   for (assessments of data.assessments_course) {
+    optionHTML += '<option value="' + assessments.lecture_or_lab +'">' + assessments.lecture_or_lab + " "  + assessments.lecture_lab_number + " "  + assessments.assessment_name + '</option>'
+   }
+
+   div_select.innerHTML = '<b> TLAs stored for '+ assessments.course_course_id +': </b> <br/>' + optionHTML;
+
+   }
+
+  });
+ });
+}
+
+
+// this function is to check if there is results come from the select satement frome above function (results)
+function isEmptyObject(value) {
+  return Object.keys(value).length === 0;
+}
+
+//***********************************************************************************************************
+
+// execute the function when the page loads
+$(document).ready(course_select.onchange);
+</script>
+
+
+{% endblock %}
+<div id="b323f2b3-a9f8-4a62-acc9-4b3fe12d6129-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

@@ -1,0 +1,89 @@
+
+<!-- saved from url=(0141)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/tr_dashboard_bar_chart_assessment_detail.html -->
+<html class=" rlojovzx idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <div class="container">
+<h4 style=" text-align: left; margin-left: auto; margin-right: auto;"><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;tr_dashboard_d3_students_detail&#39;,%20my_var3=std_name,%20my_var2=course_id)%20%7D%7D">Back to Students Dashboard </a></h4><h4>
+
+
+
+</h4><h3 align="center"> <b> {{course_name_not_id [0]}} ({{course_id}})  </b> </h3>
+
+<h3 align="center"> <b> Student Name: {{std_name}}  </b> </h3>
+
+<h3 align="center"> <b> {{assessment_name}}  </b> </h3><br>	<br>
+
+
+<table style="width: 100%; text-align: center; margin-left: auto; margin-right: auto;">
+  <tbody><tr>
+    <td colspan="2">
+
+	<h3 style=" text-align: center; margin-left: auto; margin-right: auto;">&nbsp; &nbsp; CLOs for {{assessment_name}}</h3>
+    
+
+  		{% for  i in clo_assessment %}
+  		
+      {% endfor %}
+     <table id="table_1" align="center" class="table table-striped" style="  width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>
+     			<th style=" text-align: center;"> CLOs </th>
+
+
+         </tr><tr>
+
+
+  		<td> <li>{{i[1]}}</li>  </td>
+
+  		</tr></tbody></table>
+
+	</td>
+
+
+  </tr>
+
+  <tr>
+
+
+
+  <td>
+  <br>
+	<h3 style="width: 60%; text-align: center; margin-left: auto; margin-right: auto;"> {{std_name}}'s Revision plan is for {{assessment_name}}:</h3>
+
+  
+
+                		{% for  i in revision_plan %}
+                    		
+                        {% endfor %}
+                       <table id="table_1" class="table table-striped" style="width: 75%; text-align: left; margin-left: auto; margin-right: auto;">
+                            <tbody><tr>
+
+                			<th> Activity Type </th>
+                			<th> Activity Name </th>
+                			<th> Activity Topic </th>
+
+                			<th> Resources/ Reference Material </th>
+
+                            </tr><tr>
+
+                    		<td> {{i[3]}}  </td>
+                    		<td> {{i[4]}}  </td>
+                    		<td> {{i[2]}}  </td>
+                    		<td> {{i[5]}}  </td>
+
+                    		</tr></tbody></table>
+	</td>
+
+</tr>
+</tbody></table>
+
+
+
+
+ </div>
+
+{% endblock %}
+
+
+
+<div id="5907221e-7342-4faf-8ef6-4f81af9112e0-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

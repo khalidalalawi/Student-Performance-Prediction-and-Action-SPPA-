@@ -1,0 +1,179 @@
+
+<!-- saved from url=(0116)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/tr_dashboard_d2.html -->
+<html class=" dkdejsnp idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <div class="container">
+      
+     
+            
+      <h3 align="center"> <b> {{course_name_not_id [0]}} ({{courseName}})  </b> </h3><br>
+      
+      
+      
+      
+      
+      
+      <table style="   width: 100%; text-align: center; margin-left: auto; margin-right: auto;">
+  <tbody><tr>
+    <td style="width:100%;  max-width:100%; vertical-align: top;">
+	<!-- CLO name for this assessment [block] -->
+      <h3>CLOs for {{assessment_name}}</h3>
+      
+    
+          
+  		{% for  i in clo_assessment %}
+  		                        
+      {% endfor %}		
+     <table id="table_1" align="center" class="table table-striped" style="  width: 500px; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>                                        		
+     			<th style="text-align: center;"> CLOs </th>
+     			
+         </tr><tr> 		
+  		     
+  		<td> <li>{{i}}</li>  </td>
+  		
+  		</tr></tbody></table>
+      <!-- END OF CLO name for this assessment [block] -->
+	</td>
+
+   
+	
+	<td style="max-width:100%; white-space:nowrap; vertical-align: top;">
+	
+    <!-- Box Plot [block] -->
+    <div style="margin-left:20px; width:390px; height:100%; " id="boxplot"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+    <script>
+// bar chart data
+     // bar chart data
+      var y0 =[
+      {% for item in box %}
+       "{{ item }}",
+       
+      {% endfor %}
+    	]
+    	
+var trace1 = {
+  y: y0,
+  type: 'box',
+  name: '{{assessment_name}}',
+  marker: {color: '#FF4136'}
+
+};
+
+var layout = {
+title: {
+    text:'Students Percentile on {{assessment_name}}',
+    font: {
+      family: 'verdana',
+      size: 20
+    }},
+  yaxis: {
+    title: 'Students Percentile',
+    zeroline: false
+  }};
+
+
+var data = [trace1];
+
+Plotly.newPlot('boxplot', data, layout);
+
+</script>
+<!-- END OF Box Plot [block] -->
+	</td>
+	
+  </tr>
+  
+  
+  
+  <tr>
+    <td style="width:100%;  max-width:100%; white-space:nowrap; vertical-align: top;">
+	<!-- at_risk students prediction results [block] -->
+    <h4 style="text-align: center;"> Students at-Risk at ({{assessment_name}})    </h4>
+    
+    
+  
+  		{% for  i in at_risk_std_name_and_id %}
+  		                        
+      {% endfor %}		
+     <table id="table_1" align="center" class="table table-striped" style="  width: 30%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>                                        		
+     			<th> Student Name </th>
+     			<th> Student ID </th>
+     			
+         </tr><tr> 		
+  		<td> <a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;tr_dashboard_d3_students_detail&#39;,%20my_var=i[0],%20my_var2=courseName)%20%7D%7D"><b> {{i[0]}} </b> </a>   </td>
+  		
+  		<td> {{i[1]}}  </td>
+  		
+  		</tr></tbody></table>
+     
+     <!-- END OF at_risk students prediction results [block] -->
+     
+	</td>
+	
+	<td style="width:100%;  max-width:100%; white-space:nowrap; vertical-align: top;">
+	<!-- less than 50% students in the assessment [block] -->
+    <h4> Students Who recieved less than 50% in ({{assessment_name}}) </h4>
+    
+    
+  
+  		{% for  i in std_name_and_id_less_50 %}
+  		                        
+      {% endfor %}		
+     <table id="table_1" align="center" class="table table-striped" style="  width: 30%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>                                        		
+     			<th> Student Name </th>
+     			<th> Student ID </th>
+     			
+         </tr><tr> 		
+  		
+  		<td> <a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;tr_dashboard_d3_students_detail&#39;,%20my_var=i[0],%20my_var2=courseName)%20%7D%7D"><b> {{i[0]}} </b> </a>   </td>
+  		
+  		<td> {{i[1]}}  </td>
+  		
+  		</tr></tbody></table>
+     
+     <!-- END OF less than 50% students in the assessment [block] -->
+     
+	</td>
+	
+  </tr>
+  
+</tbody></table>
+      
+      
+      
+      
+     
+    
+     </div>
+    
+
+{% endblock %}
+ 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+<div id="93b99daf-14a4-4da3-a77e-2edb19f2dbe5-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

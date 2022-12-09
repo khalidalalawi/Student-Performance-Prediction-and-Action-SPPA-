@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/login2.html -->
+<html lang="en" class=" qkgirjj idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Login</title>
+
+<script type="text/javascript" async="" src="./login2_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-tL/88+JE9Mv/pJzkZt5DBcS7efRA2LrT4YX0Htu8Rnmat69OIBwraynHJm/fWfbH"></script><script type="text/javascript" async="" src="./login2_files/recaptcha__en.js(1).download" crossorigin="anonymous" integrity="sha384-YOM1VjUkAnOtLKpWHvk6KSrYAoLEkaoPuep5VFiDATRna5swsN03dxDH51fiq3/H"></script><script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '6LdNv-wZAAAAAHbjcWFueit9hVAu-MeKjK8IK5Kd'
+        });
+      };
+    </script>
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./login2_files/bootstrap.min.css">
+  <script src="./login2_files/jquery.min.js.download"></script>
+  <script src="./login2_files/bootstrap.min.js.download"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 400px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 8px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+
+    .container {
+          width: 100%;
+
+    }
+
+    .container input {
+          width: 50%;
+          text-align: left;
+          display: table-cell;
+
+
+
+    }
+
+    .container label {
+          width: 50%;
+          clear: both;
+          text-align: left;
+    }
+
+     .container textarea {
+          width: 50%;
+          clear: both;
+          text-align: left;
+          display: table-cell;
+    }
+
+    .container button {
+          width: 50%;
+          clear: both;
+          text-align: center;
+          display: table-cell;
+    }
+
+
+    .containerP { text-align:left; }
+
+    .containerP p {
+     width: 100%;
+      display: table;
+      margin:10 auto;
+      display: inline-block;
+      zoom: 1.1;
+      *display: inline;
+      width: 100%;
+       height: auto;
+    }
+
+    .bgimage {
+
+    background-image: url('https://mobidev.biz/wp-content/uploads/2020/01/machine-learning-consulting-company.png');
+    background-position: center center;
+    background-size: cover;
+    height: 150px;
+    }
+
+    .center {
+  margin: auto;
+  width: 40%;
+
+  padding: 10px;
+    }
+
+
+  </style>
+
+<style data-emotion="css"></style></head>
+<body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">
+<header class="bgimage"> </header>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/login2.html">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/login2.html">Home</a></li>
+        <li><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/login2.html#">About Projects</a></li>
+        <li><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/login2.html#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-8 text-left">
+
+        <div class="container">
+      <form class="text-center border border-light p-5" method="post" action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;login&#39;)%7D%7D">
+
+            <div class="well" style="width: 70%; text-align: left; margin-left: auto; margin-right: auto; padding: 7px; padding-top: 0px; margin-top: 20px; ">
+
+            <h3>    {{data}} </h3>
+            </div>
+
+
+            <h2>     LOGIN </h2>
+
+            <!-- ID -->
+        	<label>User Name (Student ID):</label> <br>
+            <input type="text" name="user_name" required="required" id="defaultContactFormName" class="form-control mb-4" placeholder="Student ID"> <br><br>
+        	<!-- Name -->
+        	<label>Password:</label> <br>
+            <input type="password" name="password" required="required" id="defaultContactFormName" class="form-control mb-4" placeholder="Password"> <br><br>
+
+            <div class="center" id="html_element" data-callback="enableBtn"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="./login2_files/anchor.html" width="304" height="78" role="presentation" name="a-9c6w6duhj6mx" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./login2_files/saved_resource.html"></iframe></div> <br>
+
+
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert" id="button1" disabled="disabled">Login</button> <br> <br>
+
+
+
+
+        	<p style="color: red;"> {{login_error}} </p>
+
+        </form>
+
+        <script src="./login2_files/api.js.download" async="" defer="">
+
+
+        </script>
+
+        <script>
+         function enableBtn(){
+         document.getElementById("button1").disabled = false;
+                             }
+        </script>
+
+
+        </div>
+
+    </div>
+    <div class="col-sm-2 sidenav">
+
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>The University of Newcastle, Australia</p>
+</footer>
+
+
+
+<div id="214f0bfd-3e68-489d-9e08-9366ae701e5e-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

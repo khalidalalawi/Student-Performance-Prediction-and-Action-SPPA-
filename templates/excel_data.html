@@ -1,0 +1,86 @@
+
+<!-- saved from url=(0111)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/excel_data.html -->
+<html class=" vghuh idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+        <br>
+        
+        
+        
+        
+        
+        
+        
+        <h3 align="center"> {{course_id}}    </h3>  <br>
+        
+        <button id="btnExport" onclick="exportReportToExcel(this)" style="width: auto; font-size: 11px; text-align: center; position: absolute; right: 3%;  height: 25px;">Export Excel</button><br>
+         
+     
+     
+        {% set count = [0] %}
+        
+        {% for  i in d %}
+        
+        <h3 align="center"> {{d[i][loop.index-1,3]}} </h3>
+        
+        <br>
+          
+      		
+      		{% for  s in std_id %}
+  		    
+  		                    
+      {% endfor %}
+       <table id="table_1" align="center" class="table table-striped" style=" width: 90%; text-align: left; margin-left: auto; margin-right: auto;">
+         
+         <tbody><tr>                                        		
+     			<th> # </th>
+     			<th> Student Name </th>
+     			<th> Student ID </th>
+     			<th> Student Email </th>
+     			<th> Course ID </th>     			
+     			
+     			<th> {{d[i][loop.index-1,3]}} Mark </th>
+     			<th> Binary Prediction Results </th>
+     			<th> Multiclass Prediction Results </th>
+     			<th> Path </th>
+     			     			
+         </tr><tr> 		
+  		     
+  		
+  		<td> {{loop.index}}  </td>
+  		<td> {{d[i][loop.index-1,0]}}  </td>
+  		<td> {{d[i][loop.index-1,1]}}  </td>
+  		<td> {{d[i][loop.index-1,1]}}@uon.edu.au  </td>
+  		<td> {{d[i][loop.index-1,2]}}  </td>
+  		
+  		<td> {{d[i][loop.index-1,4]}}  </td>
+  		<td> {{d[i][loop.index-1,6]}}  </td>
+  		<td> {{d[i][loop.index-1,7]}}  </td>
+  		<td>  C:\Users\khale\Desktop\mail merge\attachments\{{d[i][loop.index-1,3]}}\{{d[i][loop.index-1,1]}}.pdf</td>
+
+  		</tr></tbody></table>
+       {% if count.append(count.pop() + 1 ) %}{% endif %}
+       <br><br>
+      {% endfor %}		
+    
+<script>
+
+function exportReportToExcel() {
+  let table = document.getElementsByTagName("table"); // you can use document.getElementById('tableId') as well by providing id to the table tag
+  
+  {% for  i in d %}
+  
+  TableToExcel.convert(table[{{loop.index-1}}], { // html code may contain multiple tables so here we are refering to 1st table tag
+    name: `{{course_id}} {{d[i][loop.index-1,3]}}.xlsx`, // fileName you could use any name
+    sheet: {
+      name: '{{d_index[loop.index-1]}}' // sheetName
+    }
+  });
+  
+  {% endfor %}	
+  
+  
+}
+
+</script>     
+     
+{% endblock %}<div id="f6b0667a-6091-4a88-8607-186294300532-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

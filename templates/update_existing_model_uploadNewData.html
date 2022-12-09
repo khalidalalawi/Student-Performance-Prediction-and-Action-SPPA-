@@ -1,0 +1,92 @@
+
+<!-- saved from url=(0136)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/update_existing_model_uploadNewData.html -->
+<html class=" jxgrlmysigr idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <div class="container">
+            <div id="pageloader">
+
+           <img src="./update_existing_model_uploadNewData_files/loader-large.gif" alt="processing...">
+           <h3 class="well">  Please wait until it finish. Do not refresh the page <br> It may take several minutes to complete  </h3>
+
+        </div>
+
+      <form method="POST" enctype="multipart/form-data" class="text-center border border-light p-5" id="myform">
+
+            <h2>     Update Existing Model </h2>
+            <p> * First, you need to upload more data to existing course that you want to update its ML models. Then you can update the models</p><br>
+
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_course_id" id="course" required="required">
+    		{% for    user in cityList %}
+            <option value="{{user[0]}}" selected=""> {{user[0]}}  [{{user[1]}}]   </option>
+    		{% endfor %}
+            </select>
+            <br><br>
+
+
+        	<label>Upload CSV File:</label> <br>
+            <input type="file" name="file" id="defaultContactFormName" required="required" class="form-control-file"> <br>
+
+
+            <a href="https://i.ibb.co/K9DGQrp/example-upload.png" target="_blank">See an example of a CSV file format</a> <br>
+
+            <div id="show_assessments" class="well" style="width: 50%; text-align: left; margin-left: auto; margin-right: auto;">
+
+            </div>
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Upload</button> <br> <br>
+
+
+        </form>
+
+        </div>
+
+         <script>
+course_select = document.getElementById('course');
+div_select = document.getElementById('show_assessments');
+
+course_select.onchange = function(){
+ course = course_select.value;
+ fetch('assessments/' + course).then(function(response){
+  response.json().then(function(data) {
+   optionHTML = '';
+   for (assessments of data.assessments_course) {
+    optionHTML +=  assessments.assessment_name + " <b>|</b> ";
+   }
+
+   div_select.innerHTML = '<b><span>&#9432;</span> </b> ' + data.length_records_in_course +  ' records stored in the database for this course <br/><br/><b><span>&#9432;</span>  Please make sure the columns format and order of the csv file you want to upload for '+ assessments.course_course_id + ' look like this : </b> <br/>' + optionHTML + ' Total (mark out of 100) <b>|</b> Grade  </br></br> <p><span>&#9432;</span><b><i>Total column</i></b> contains total mark of all assessments out of 100  </br> <span>&#9432;</span> <b><i> Grade column</i></b> contains students final grade such as HD, D, C ..</p>';
+
+  });
+ });
+}
+
+// execute the function when the page loads
+$(document).ready(course_select.onchange);
+
+// this is for the spinner when click submit button
+$(document).ready(function(){
+  $("#myform").on("submit", function(){
+    $("#pageloader").fadeIn();
+  });//submit
+});//document ready
+
+</script>
+
+<script>
+
+// this for info button
+$('.info').popover();
+$(':not(#anything)').on('click', function (e) {
+    $('.info').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});
+
+</script>
+
+{% endblock %}<div id="9dd82986-b104-4d06-b978-de6708fb07b5-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

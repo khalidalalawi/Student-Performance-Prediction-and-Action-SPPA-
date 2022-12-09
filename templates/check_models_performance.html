@@ -1,0 +1,29 @@
+
+<!-- saved from url=(0125)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/check_models_performance.html -->
+<html class=" rdjczsm idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+
+
+      <div class="container">
+      <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;check_models_performance&#39;)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+
+            <h2>     Check Models Performance </h2> <br>
+
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_name" required="">
+    		{% for    user in cityList %}
+            <option value="{{user[0]}}" selected="">{{user[0]}}  [ {{user[1]}} ]    </option>
+    		{% endfor %}
+            </select>
+            <br><br>
+
+
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Submit</button> <br> <br>
+
+      </form>
+      </div>
+
+
+{% endblock %}<div id="aabef94c-9f37-403a-b50b-581301010189-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!-- saved from url=(0105)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/base.html -->
+<html lang="en" class=" psutvk idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <script src="./base_files/tableToExcel.js.download"></script>
+
+    <script src="./base_files/html2pdf.bundle.js.download"></script>
+
+    <script src="./base_files/Chart.min.js.download"></script>
+
+    <script src="./base_files/plotly-2.2.0.min.js.download"></script><style id="plotly.js-style-global"></style>
+
+
+
+
+
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./base_files/bootstrap.min.css">
+
+
+
+  <script src="./base_files/jquery.min.js.download"></script>
+  <script src="./base_files/bootstrap.min.js.download"></script>
+  <script src="./base_files/html2pdf.bundle.js.download"></script>
+
+
+  <style>
+@import "compass/css3";
+
+
+
+.FixedHeightContainer
+{
+  height: 250px;
+  width:500px;
+
+  background:white;
+}
+.Content2
+{
+    height:224px;
+   overflow:auto;
+    background:#fff;
+}
+
+
+
+span.title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+a.info {
+  vertical-align: bottom;
+  position:relative; /* Anything but static */
+  width: 1.5em;
+  height: 1.5em;
+  text-indent: -9999em;
+  display: inline-block;
+  color: white;
+  font-weight:bold;
+  font-size:1em;
+  line-height:1em;
+  background-color: #91b2d2;
+  margin-left: .25em;
+  -webkit-border-radius:.75em;
+  -moz-border-radius:.75em;
+  border-radius:.75em;
+}
+a.info:hover {
+  background-color:#628cb6;
+  cursor: hand;
+  cursor: pointer;
+}
+a.info:before {
+  content:"?";
+  position: absolute;
+  top: .25em;
+  left:0;
+  text-indent: 0;
+  display:block;
+  width:1.5em;
+  text-align:center;
+}
+
+.popover-title {
+  font-weight:bold;
+}
+
+
+label a.info,
+label div.popover.fade.in {
+  opacity: 1;
+  white-space: pre-wrap;
+
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+label:hover a.info,
+label:hover div.popover.fade.in {
+  opacity: 1; }
+
+   #pageloader
+{
+  background: rgba( 255, 255, 255, 0.8 );
+  display: none;
+  height: 100%;
+  position: absolute;
+
+  z-index: 9999;
+  text-align: left;
+
+  width: 85%;
+  text-align: left;
+
+
+
+}
+
+
+#pageloader img
+{
+  left: 55%;
+  margin-left: -32px;
+  margin-top: -32px;
+  position: absolute;
+  top: 25%;
+  text-align: left;
+
+}
+#pageloader h3
+{
+  left: 24%;
+  margin-left: -32px;
+  margin-top: -32px;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  color: #336699;
+
+    opacity: 0.9;
+
+
+}
+
+
+
+
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 15px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 8px
+
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+
+    .container {
+          width: 100%;
+
+    }
+
+    .container input {
+          width: 50%;
+          text-align: left;
+          display: table-cell;
+
+
+
+    }
+
+    .container [type="file"] {
+          width: 50%;
+          text-align: left;
+          display: table-cell;
+          margin: auto;
+
+
+    }
+
+    .container select {
+          width: 50%;
+          text-align: left;
+          display: table-cell;
+            height: 35px;
+    }
+
+    .container label {
+          width: 50%;
+          clear: both;
+          text-align: left;
+    }
+
+     .container textarea {
+          width: 50%;
+          clear: both;
+          text-align: left;
+          display: table-cell;
+    }
+
+    .container button {
+          width: 50%;
+          clear: both;
+          text-align: center;
+          display: table-cell;
+    }
+
+
+  .container input[type="radio"] {
+
+          text-align: center;
+                   clear: both;
+                  width: 5%;
+
+            margin: 0px;
+            margin-top: -1px;
+
+            margin-left: 50px;
+
+
+    vertical-align: middle;
+          display:inline;
+    }
+
+    .container input[type="checkbox"] {
+
+          text-align: center;
+                   clear: both;
+                  width: 5%;
+
+            margin: 0px;
+            margin-top: -1px;
+
+            margin-left: 50px;
+
+
+    vertical-align: middle;
+          display:inline;
+    }
+
+
+
+    .containerP { text-align:left; }
+
+    .containerP p {
+     width: 100%;
+      display: table;
+      margin:10 auto;
+      display: inline-block;
+      zoom: 1.1;
+      *display: inline;
+      width: 100%;
+       height: auto;
+    }
+
+    .bgimage {
+
+    background-image: url('https://australiaeast1-mediap.svc.ms/transform/thumbnail?provider=spo&inputFormat=png&cs=fFNQTw&docid=https%3A%2F%2Fuoneduau-my.sharepoint.com%3A443%2F_api%2Fv2.0%2Fdrives%2Fb!w8SVSz7whUOibBIOglgyc-xl58Pv49hCpLWor68gwWWGFAPsYY2mS5LeooNtsh08%2Fitems%2F01H6CJENY6EEG3ZRWRWNC2HW4RTDBDMKT2%3Fversion%3DPublished&encodeFailures=1&ctag=%22c%3A%7BBC0D211E-D1C6-45B3-A3DB-9198C2362A7A%7D%2C2%22&srcWidth=&srcHeight=&width=1366&height=528&action=Access');
+    background-image: url('https://mobidev.biz/wp-content/uploads/2020/01/machine-learning-consulting-company.png');
+
+    background-position: center center;
+    background-size: cover;
+    height: 150px;
+    }
+
+
+
+
+  </style>
+
+
+<title>Students Prediction System</title>
+
+
+<style data-emotion="css"></style></head>
+<body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">
+
+
+<header class="bgimage"> </header>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/base.html">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;home_page&#39;)%7D%7D">Home</a></li>
+        <li><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;about_project&#39;)%7D%7D">About Project</a></li>
+        <li><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;contact_us&#39;)%7D%7D">Contact Us</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;logout&#39;)%7D%7D"><span class="glyphicon glyphicon-log-in"></span> Logout, Hi:  {{session["USERNAME"]}}</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav" style="width: 20%; height: 165%;">
+
+      <div class="containerP">
+
+      <p> Course Design:</p>
+      <ul>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;create_course&#39;)%7D%7D">Create Course</a></p> </li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;design_course&#39;)%7D%7D">Create CLO </a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;create_assessment_choose_course&#39;)%7D%7D">Create Assessment for Course</a></p> </li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;design_course_tla&#39;)%7D%7D">Create TLA </a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;all_revision_plan_order_by_assessment_name_choose_course&#39;)%7D%7D">Show Revision Plan</a></p></li>
+
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;update_tla_choose_course&#39;)%7D%7D">Update CLO AT and TLA </a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;update_m2m_choose_course&#39;)%7D%7D">Update Mapping </a></p></li>
+
+
+	  </ul>
+
+	  <p> Prediction Moldel:</p>
+	  <ul>
+	  <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;upload_csv&#39;)%7D%7D">Upload Dataset</a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;createModel&#39;)%7D%7D">Create ML Models</a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;predict_csv_simple_first&#39;)%7D%7D">Upload Students Mark &amp; Perform Prediction </a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;update_existing_model_uploadNewData&#39;)%7D%7D">Update Existing Models</a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;delete_course&#39;)%7D%7D">Delete Course and Model</a></p></li>
+      </ul>
+
+      <p> Dashboard:</p>
+      <ul>
+
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;tr_dashboard_choose_course&#39;)%7D%7D">Teacher Dashboard</a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;pdf_choose_course&#39;)%7D%7D">Student Dashboard</a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;excel_data_choose_course&#39;)%7D%7D">Merge Mail Data</a></p></li>
+
+
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;upload_intervention_detail_choose_course&#39;)%7D%7D">Upload Intervention Data</a></p></li>
+      <li><p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;final_report1_choose_course&#39;)%7D%7D">Final Course Report</a></p></li>
+
+      </ul>
+
+
+
+
+      </div>
+
+      </div>
+
+    <div class="col-sm-8 text-left">
+
+
+
+     <!-- child template -->
+      {% block content %}{% endblock %}
+
+
+
+
+
+
+
+
+     </div>
+
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>The University of Newcastle, Australia </p>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="974ce2c5-2423-46ef-b625-3db29ef1b6aa-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

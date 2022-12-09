@@ -1,0 +1,191 @@
+
+<!-- saved from url=(0111)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/update_tla.html -->
+<html class=" flaqdnq idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+        <br>
+
+  <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;update_tla_submit_btn&#39;,%20my_var%20=%20count_tla_table,%20my_var3%20=%20count_clo_table,%20my_var4%20=%20count_assessment_table%20)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+
+
+        <h3 align="center"> {{course_id}} </h3>
+
+
+
+
+         <h3 align="center"> CLO Table </h3>
+     
+
+          {% set k = [0] %}
+  		{% for  i in clo_table %}
+  		
+
+  		{% if k.append(k.pop() + 1 ) %}{% endif %} {# increment k by 1 #}
+
+  		
+      {% endfor %}
+     <table id="table_3" align="center" style=" width: 200%; text-align: left; margin-left: auto; margin-right: auto;" class="table table-striped">
+         <tbody><tr>
+     			<th> CLOs Name </th>
+     			<th> Course Id </th>
+     			<th> CLOs Level </th>
+     			<th> Auto Increment </th>
+     			<th> Parent CLOs </th>
+
+     			<th> Delete This</th>
+         </tr><tr>
+
+
+  		<td> <input type="text" name="clo_name_clo_table{{k[0]}}" style="width: 300px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[0]}}"> </td>
+
+  		<td> <input type="text" name="course_course_id_clo_table{{k[0]}}" style="width: 120px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[1]}}" readonly=""> </td>
+
+  		<td> <input type="number" min="0" max="10" name="clo_level_clo_table{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[2]}}"> </td>
+
+  		<td> <input type="text" name="auto_increment_clo_table{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[3]}}" readonly=""> </td>
+
+
+
+  		<td>
+      		<select name="parent_clo_clo_table{{k[0]}}" style="width: 250px;">
+      		{% for    user in parent_clo %}
+
+        		<option value="{{user}}" selected=""> {{user}}  </option>
+
+        	{% endfor %}
+        	<option>None</option>
+        	<option selected="selected">{{i[4]}} </option>
+            </select>
+        </td>
+
+        <td>
+        <input type="checkbox" name="delete_clo_table{{k[0]}}" value="delete_yes">
+        </td></tr></tbody></table>
+
+     <br><br>
+
+
+
+
+
+
+
+     <h3 align="center"> Assessment Table </h3>
+     
+
+          {% set k = [0] %}
+  		{% for  i in assessment_table %}
+  		
+
+  		{% if k.append(k.pop() + 1 ) %}{% endif %} {# increment k by 1 #}
+
+  		
+      {% endfor %}
+     <table id="table_4" align="center" class="table table-striped" style=" width: 100%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>
+     			<th> Assessment Name </th>
+     			<th> Course Id </th>
+     			<th> Auto Increment </th>
+     			<th> Mark Out Of</th>
+     			<th> Mark Worth (Weight) </th>
+
+     			<th> Delete This </th>
+         </tr><tr>
+
+
+  		<td> <input type="text" name="assessment_name_assessment_table{{k[0]}}" style="width: 200px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[0]}}"> </td>
+
+  		<td> <input type="text" name="course_course_id_assessment_table{{k[0]}}" style="width: 120px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[1]}}" readonly=""> </td>
+
+  		<td> <input type="text" name="auto_increment_assessment_table{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[2]}}" readonly=""> </td>
+
+  		<td> <input type="number" min="1" max="100" name="mark_out_assessment_table{{k[0]}}" style="width: 80px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[3]}}"> </td>
+
+  		<td> <input type="number" min="1" max="100" name="mark_worth_assessment_table{{k[0]}}" style="width: 80px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[4]}}"> </td>
+
+  		<td>
+        <input type="checkbox" name="delete_assessment_table{{k[0]}}" value="delete_yes">
+        </td></tr></tbody></table>
+
+     <br><br>
+
+
+
+
+
+     <h3 align="center"> TLA Table </h3>
+     
+
+          {% set k = [0] %}
+  		{% for  i in tla_table %}
+  		
+
+
+  		{% if k.append(k.pop() + 1 ) %}{% endif %} {# increment k by 1 #}
+
+  		
+      {% endfor %}
+     <table id="table_1" align="center" class="table table-striped" style=" width: 100%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>
+     			<th> TLA Id </th>
+     			<th> Course Id </th>
+     			<th> Activity Type </th>
+     			<th> Activities Name </th>
+     			<th> Activities Topic </th>
+     			<th> Parent TLA </th>
+     			<th> User Name </th>
+     			<th> TLA Resources </th>
+
+     			<th> Delete This </th>
+
+
+
+
+
+         </tr><tr>
+
+
+  		<td> <input type="text" name="tla_id{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[0]}}" readonly=""> </td>
+
+  		<td> <input type="text" name="course_course_id{{k[0]}}" style="width: 110px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[1]}}" readonly=""> </td>
+
+
+  		<td> <input type="text" name="Activity_Type{{k[0]}}" style="width: 110px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[2]}}"> </td>
+
+  		<td> <input type="text" name="Activities_Name{{k[0]}}" style="width: 200px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[3]}}"> </td>
+
+  		<td> <input type="text" name="Activities_Topic{{k[0]}}" style="width: 200px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[4]}}"> </td>
+
+
+
+  		<td>
+      		<select name="parent_tla{{k[0]}}" style="width: 200px;">
+      		{% for    user in parent_tla %}
+
+        		<option value="{{user}}" selected=""> {{user}}  </option>
+
+        	{% endfor %}
+        	<option>None</option>
+        	<option selected="selected">{{i[5]}} </option>
+            </select>
+        </td>
+
+  		<td> <input type="text" name="userName{{k[0]}}" style="width: 80px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[6]}}" readonly=""> </td>
+
+  		<td> <input type="text" name="tla_Resources{{k[0]}}" style="width: 220px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[7]}}"> </td>
+
+
+  		<td>
+        <input type="checkbox" name="delete_tla_table{{k[0]}}" value="delete_yes">
+        </td></tr></tbody></table>
+
+     <br><br>
+
+
+
+
+     <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">UPDATE</button> <br> <br><br><br>
+
+        </form>
+
+{% endblock %}<div id="17ad63af-d85a-433a-b423-b6042eac598f-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

@@ -1,0 +1,105 @@
+
+<!-- saved from url=(0118)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/create_assessment.html -->
+<html class=" xrfnrms idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <div class="container">
+      <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;create_assessment&#39;)%7D%7D" class="text-center border border-light p-5" method="post">
+
+            <h2>     Create Assessment </h2> <br>
+
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_course_id" id="course" required="required">
+
+
+            <option value="{{course_id}}" selected=""> {{course_id}}  </option>
+
+
+            </select>
+            <br><br>
+
+
+            <!-- ID -->
+        	<label>Assessment Name:</label> <br>
+            <input type="text" name="assessment_name" required="required" id="defaultContactFormName" class="form-control mb-4" placeholder="Assessment Name"> <br><br>
+        	<!-- Name -->
+
+        	<label>Assessment Mark Worth (Weight):</label> <br>
+            <input type="number" min="0" max="100" name="mark_worth" required="required" id="defaultContactFormName" class="form-control mb-4" placeholder="Assessment Mark Worth"> <br><br>
+
+            <label>Assessment Marked Out Of:</label> <br>
+            <input type="number" min="0" max="250" name="mark_out" required="required" id="defaultContactFormName" class="form-control mb-4" placeholder="Assessment Marked Out Of"> <br><br>
+
+            <label for="courses">Allign to CLOs:</label><br>
+
+        	{% for    user in clo %}
+
+                <input type="checkbox" id="{{user[0]}}" name="clo_checkbox" value="{{user[0]}}">
+                <label for="{{user[0]}}"> [Level {{user[2]}}] {{user[0]}}</label><br>
+
+            {% endfor %}
+
+        	<br><br>
+
+
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Insert</button> <br> <br>
+        	<button class="btn btn-info btn-block" style="width: 50%" type="reset" name="reset" value="Reset">Reset</button>   <br><br>
+
+
+
+        	<div id="show_assessments" class="well" style="width: 50%; text-align: left; margin-left: auto; margin-right: auto;">
+
+            </div>
+            <br> <br>
+        </form>
+
+        </div>
+
+        <script>
+
+//***********************************************************************************************************
+course_select = document.getElementById('course');
+div_select = document.getElementById('show_assessments');
+
+course_select.onchange = function(){
+ course = course_select.value;
+ fetch('assessments/' + course).then(function(response){
+  response.json().then(function(data) {
+   optionHTML = '';
+
+   check_object_results=isEmptyObject(data.assessments_course)
+
+   if (check_object_results==true){
+   optionHTML ="There are no assessments created yet for this course";
+   div_select.innerHTML =  optionHTML;
+
+   }
+   else
+   {
+   for (assessments of data.assessments_course) {
+    optionHTML += '<option value="' + assessments.assessment_name +'">' + assessments.assessment_name + '</option>'
+   }
+
+   div_select.innerHTML = '<b> Assessments stored for '+ assessments.course_course_id +': </b> <br/>' + optionHTML;
+
+   }
+
+  });
+ });
+}
+
+
+// this function is to check if there is results come from the select satement frome above function (results)
+function isEmptyObject(value) {
+  return Object.keys(value).length === 0;
+}
+
+//***********************************************************************************************************
+
+// execute the function when the page loads
+$(document).ready(course_select.onchange);
+</script>
+
+{% endblock %}
+<div id="d9082d15-8039-453a-bdd0-d10f1f341a0c-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

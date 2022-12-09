@@ -1,0 +1,103 @@
+
+<!-- saved from url=(0116)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/map_ATs_to_TLAs.html -->
+<html class=" rhtlyaff idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <div class="container">
+      
+      <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;map_Ats_to_TLAs&#39;)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+
+            <h2>     Map Assessments to TLAs </h2> <br>
+            
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_course_id" id="course" required="required">	
+    		
+    		
+            <option value="{{cityList}}" selected=""> {{cityList}}   </option>
+    		
+            </select>
+            <br><br>
+            
+            <label for="courses">Assessment Name:</label><br>
+			<select name="assessment_name" id="course" required="required">	
+    		{% for    user in assessment_db %}
+    		
+            <option value="{{user[0]}}" selected=""> {{user[0]}}  [{{user[1]}}]   </option>
+    		{% endfor %}
+            </select>
+            <br><br>                        
+        	
+           
+            <label>Map to [TLAs]:</label> <br>                        
+			<select name="map_to_tla" id="course" required="required">	
+    		{% for    user in parent_tla_db %}    		
+            <option value="{{user[0]}}" selected=""> {{user[2]}}  {{user[3]}}  [{{user[4]}}]  </option>
+    		{% endfor %}
+            </select>
+            <br><br>
+           
+           
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Insert</button> <br> <br>
+        	<button class="btn btn-info btn-block" style="width: 50%" type="reset" name="reset" value="Reset">Reset</button>   <br><br>
+        	
+        	
+        	
+        	<div id="show_assessments" class="well" style="width: 50%; text-align: left; margin-left: auto; margin-right: auto;">
+        
+            </div>
+            <br> <br>
+        </form>
+        
+        </div>
+       <script>
+        
+//***********************************************************************************************************
+course_select = document.getElementById('course');
+div_select = document.getElementById('show_assessments');
+
+course_select.onchange = function(){
+ course = course_select.value;
+ fetch('map_ATs_to_TLAs/' + course).then(function(response){
+  response.json().then(function(data) {
+   optionHTML = '';
+   
+   check_object_results=isEmptyObject(data.assessments_course)   
+   
+   if (check_object_results==true){
+   optionHTML ="There are no Task allgigned to TLAs yet for this course";
+   div_select.innerHTML =  optionHTML;
+    
+   }
+   else
+   {
+   for (assessments of data.assessments_course) {
+    
+    
+    optionHTML += '<option value="' + assessments.assessment_name +'">' + assessments.assessment_name + " Map to "  + assessments.lecture_or_lab + " "  + assessments.lecture_lab_number + ": " + assessments.tla_topic + '</option>'
+   }
+   
+   div_select.innerHTML = '<b> Assignment Tasks that alligned to TLAs  for '+ assessments.course_course_id +': </b> <br/>' + optionHTML;
+   
+   }
+          
+  });
+ });
+}
+
+
+// this function is to check if there is results come from the select satement frome above function (results)
+function isEmptyObject(value) {
+  return Object.keys(value).length === 0;
+}
+
+//***********************************************************************************************************            
+
+// execute the function when the page loads
+$(document).ready(course_select.onchange);
+</script>
+
+
+       
+{% endblock %}
+<div id="50599395-1afc-4626-8e81-da4aa3b9b492-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

@@ -1,0 +1,43 @@
+
+<!-- saved from url=(0129)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/std_dashboard1_choose_course.html -->
+<html class=" hrvkjlpslk idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base_std_dashboard.html" %}
+{% block content %}
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav" style="width: 20%; height: 155%;">
+
+      <div class="containerP">
+
+       	  
+	  
+	  
+      </div>
+      
+      </div>
+
+    <div class="col-sm-8 text-left">
+    
+
+        <div class="container">
+      
+      <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;std_dashboard1&#39;)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+
+            <h2>     Students Dashboard </h2> <br>
+            
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_course_id" required="required">
+    		{% for    user in cityList %}
+            <option value="{{user[0]}}" selected=""> {{user[0]}}     </option>
+    		{% endfor %}
+            </select>
+            <br><br>
+        
+        
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">SELECT</button> <br> <br><br><br>
+        	
+        </form>
+        
+        </div>
+
+{% endblock %}</div></div></div><div id="926f7991-ea4e-4704-9fec-028466f6474c-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

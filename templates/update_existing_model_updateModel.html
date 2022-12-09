@@ -1,0 +1,47 @@
+
+<!-- saved from url=(0134)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/update_existing_model_updateModel.html -->
+<html class=" cyeefkgw idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <h3 style="text-align: center;">Thank you, {{length_of_addedd_data_new }} students records have been added successfully</h3>
+
+      <div class="container">
+          <div id="pageloader">
+
+           <img src="./update_existing_model_updateModel_files/loader-large.gif" alt="processing...">
+           <h3 class="well">  Please wait until it finish. Do not refresh the page <br> It may take several minutes to complete  </h3>
+
+        </div>
+
+      <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;update_existing_model_updateModel&#39;)%7D%7D" class="text-center border border-light p-5" method="post" id="myform">
+
+            <h2>     Update Existing Models for ({{course_course_id}}) Course  </h2> <br>
+
+
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_course_id" required="">
+    		{% for    user in cityList %}
+            <option value="{{user[0]}}" selected=""> {{user[0]}}  [ {{user[1]}} ]   </option>
+    		{% endfor %}
+            </select>
+            <br><br>
+
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Update</button> <br> <br><br><br>
+
+        </form>
+        </div>
+
+        <script>
+
+// this is for the spinner when click submit button
+    $(document).ready(function(){
+      $("#myform").on("submit", function(){
+    $("#pageloader").fadeIn();
+      });//submit
+    });//document ready
+
+
+</script>
+
+{% endblock %}<div id="426a3012-07cc-49b8-a185-00f45d4e9f95-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

@@ -1,0 +1,573 @@
+
+<!-- saved from url=(0133)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/Results_check_models_performance.html -->
+<html class=" nftqonmca idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+
+               <h2 style="text-align: center;">Models Performance Summary:</h2> <br>
+
+
+
+         <div class="well" style="width: 85%; text-align: left; margin-left: auto; margin-right: auto;">
+          <p><b>Accuracy</b> is a measure for how many correct predictions the model made to the total dataset.</p>
+          <p><b>Recall</b> is the measure for how many true positives get predicted out of all the positives in the dataset.   </p>
+          <p><b>Precision</b> is the ratio of correctly predicted positive observations to the total predicted positive observations.   </p>
+          <b>F-measure</b> is the weighted average of Precision and Recall.
+          </div>
+
+
+        <h3 style="text-align: center;"> <p> Five Models have been created for ({{ course_course_id }}) course : </p></h3>
+
+        <br>
+        <div class="text-center border border-light p-5">
+        <b> Logistic Regression Binary model performance: </b> <br>
+        
+
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ RF_Binary [i,5] }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ RF_Binary [i,6] }} </td></tr>
+
+        <tr>
+       <td> Recall </td><td>{{ RF_Binary [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ RF_Binary [i,8] }} </td></tr>
+
+       </tbody></table>
+
+        <br>
+        <b> SVM Binary model performance: </b> <br>
+        
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ SVM_Binary [i,5]  }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ SVM_Binary [i,6] }} </td></tr>
+
+       <tr>
+       <td> Recall </td><td>{{ SVM_Binary [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ SVM_Binary [i,8] }} </td></tr>
+
+       </tbody></table>
+
+
+
+        <br>
+        <b> KNN Binary model performance: </b> <br>
+        
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ KNN_Binary [i,5] }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ KNN_Binary [i,6] }} </td></tr>
+
+        <tr>
+       <td> Recall </td><td>{{ KNN_Binary [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ KNN_Binary [i,8] }} </td></tr>
+
+       </tbody></table>
+
+        <br>
+        <b> NB Binary model performance: </b> <br>
+        
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ NB_Binary [i,5] }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ NB_Binary [i,6]  }} </td></tr>
+
+        <tr>
+       <td> Recall </td><td>{{ NB_Binary [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ NB_Binary [i,8] }} </td></tr>
+
+       </tbody></table>
+
+       <br>
+        <b> DT Binary model performance: </b> <br>
+        
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ DT_Binary [i,5] }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ DT_Binary [i,6]  }} </td></tr>
+
+          <tr>
+       <td> Recall </td><td>{{ DT_Binary [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ DT_Binary [i,8] }} </td></tr>
+
+       </tbody></table>
+
+       <hr>
+
+        <br>
+        <b> Logistic Regression Multiclass model performance: </b> <br>
+        
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ RF_Multiclass [i,5] }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ RF_Multiclass [i,6] }} </td></tr>
+
+         <tr>
+       <td> Recall </td><td>{{ RF_Multiclass [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ RF_Multiclass [i,8] }} </td></tr>
+
+       </tbody></table>
+
+        <br>
+        <b> SVM Multiclass model performance: </b> <br>
+        
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ SVM_Multiclass [i,5]  }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ SVM_Multiclass [i,6]  }} </td></tr>
+
+        <tr>
+       <td> Recall </td><td>{{ SVM_Multiclass [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ SVM_Multiclass [i,8] }} </td></tr>
+
+       </tbody></table>
+
+        <br>
+        <b> KNN Multiclass model performance: </b> <br>
+        
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ KNN_Multiclass [i,5] }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ KNN_Multiclass [i,6] }} </td></tr>
+
+           <tr>
+       <td> Recall </td><td>{{ KNN_Multiclass [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ KNN_Multiclass [i,8] }} </td></tr>
+
+       </tbody></table>
+
+        <br>
+        <b> NB Multiclass model performance: </b> <br>
+        
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ NB_Multiclass [i,5] }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ NB_Multiclass [i,6] }} </td></tr>
+
+            <tr>
+       <td> Recall </td><td>{{ NB_Multiclass [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ NB_Multiclass [i,8] }} </td></tr>
+
+       </tbody></table>
+
+        <br>
+        <b> DT Multiclass model performance: </b> <br>
+        
+            {% set count = namespace(value=number_of_model_for_loop_html) %}
+
+            {% for  i in range(number_of_model_for_loop_html) %}
+
+              
+
+              {% set count.value = count.value - 1 %}
+
+           {% endfor %}
+        
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       
+         {% for  i in range(number_of_model_for_loop_html) %}
+
+         
+
+         {% endfor %}
+       <table class="table table-striped" style="width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+            <tbody><tr>
+            <th> </th><th>{{count.value}} Assessment</th></tr>
+
+        <tr>
+        <td> Accuracy </td><td>{{ DT_Multiclass [i,5] }} </td></tr>
+
+       <tr>
+       <td> F-Measure </td><td>{{ DT_Multiclass [i,6] }} </td></tr>
+
+          <tr>
+       <td> Recall </td><td>{{ DT_Multiclass [i,7] }} </td></tr>
+
+        <tr>
+       <td> Precision </td><td>{{ DT_Multiclass [i,8] }} </td></tr>
+
+       </tbody></table>
+
+       </div>
+       <br>
+
+
+
+
+{% endblock %}<div id="0735f86b-46bc-44d0-b097-10b0cf3a9de0-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

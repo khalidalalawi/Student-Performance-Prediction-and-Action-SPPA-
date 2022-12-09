@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!-- saved from url=(0109)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/register.html -->
+<html lang="en" class=" linxgk idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Sign up</title>
+
+<script type="text/javascript" async="" src="./register_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-tL/88+JE9Mv/pJzkZt5DBcS7efRA2LrT4YX0Htu8Rnmat69OIBwraynHJm/fWfbH"></script><script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '6Le4buIZAAAAAOxBDnaKpwn4rfvldmeHkeJTbiIW'
+        });
+      };
+    </script>
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./register_files/bootstrap.min.css">
+  <script src="./register_files/jquery.min.js.download"></script>
+  <script src="./register_files/bootstrap.min.js.download"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 400px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 8px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+
+    .container {
+          width: 100%;
+
+    }
+
+    .container input {
+          width: 50%;
+          text-align: left;
+          display: table-cell;
+
+
+
+    }
+
+
+
+    .container label {
+          width: 50%;
+          clear: both;
+          text-align: left;
+    }
+
+     .container textarea {
+          width: 50%;
+          clear: both;
+          text-align: left;
+          display: table-cell;
+    }
+
+    .container button {
+          width: 50%;
+          clear: both;
+          text-align: center;
+          display: table-cell;
+    }
+
+
+    .containerP { text-align:left; }
+
+    .containerP p {
+     width: 100%;
+      display: table;
+      margin:10 auto;
+      display: inline-block;
+      zoom: 1.1;
+      *display: inline;
+      width: 100%;
+       height: auto;
+    }
+
+    .bgimage {
+
+    background-image: url('https://mobidev.biz/wp-content/uploads/2020/01/machine-learning-consulting-company.png');
+    background-position: center center;
+    background-size: cover;
+    height: 150px;
+    }
+
+    .center {
+  margin: auto;
+  width: 40%;
+
+  padding: 10px;
+    }
+
+
+        /* Style the submit button */
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+#message p {
+  padding: 2px 77px;
+  font-size: 13px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -10px;
+  content: "?";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -10px;
+  content: "?";
+}
+
+
+  </style>
+
+<style data-emotion="css"></style></head>
+<body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">
+<header class="bgimage"> </header>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/register.html">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/register.html">Home</a></li>
+        <li><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/register.html#">About Projects</a></li>
+        <li><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/register.html#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-8 text-left">
+
+        <div class="container">
+      <form class="text-center border border-light p-5" method="post">
+
+            <h2>     Sign Up </h2> <br>
+
+            <label for="usrname">Username (Student ID must start with c)</label><br>
+
+            <input type="text" id="usrname" name="usrname" pattern="c([0-9]){7}" placeholder="e.g. c1234567" title="Must start with c and then 7 numbers" required="" class="form-control mb-4"> <br><br>
+
+
+    <label for="psw">Password</label><br>
+    <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="" class="form-control mb-4" placeholder="Password"> <br><br>
+
+    <label for="psw">Confirm Password</label><br>
+
+    <input type="password" id="confirmPassword" name="confirmPassword" required="" class="form-control mb-4" placeholder="Confirm Password"> <br><br>
+
+
+
+    <input type="Submit" value="Submit" class="btn btn-info btn-block" style="width: 50%;" id="btnSubmit">
+
+    <script type="text/javascript" src="./register_files/jquery.min.js(1).download"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {
+            var password = $("#psw").val();
+            var confirmPassword = $("#confirmPassword").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
+</script>
+
+
+  </form>
+</div>
+
+<div class="well" style="width: 48%; text-align: left; margin-left: auto; margin-right: auto; padding-top: 0px; margin-top: 20px; display: none;" id="message">
+  <h4 style="text-align:center;">Password must contain the following:</h4>
+  <p id="letter" class="valid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="valid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="valid">A <b>number</b></p>
+  <p id="length" class="valid">Minimum <b>8 characters</b></p>
+</div>
+
+<script>
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+
+
+
+
+
+
+
+        
+
+        <script src="./register_files/api.js.download" async="" defer="">
+
+
+        </script>
+
+        <script>
+         function enableBtn(){
+         document.getElementById("button1").disabled = false;
+                             }
+        </script>
+
+
+        </div>
+
+    </div>
+    <div class="col-sm-2 sidenav">
+
+    </div>
+  </div>
+
+
+<footer class="container-fluid text-center">
+  <p>The University of Newcastle, Australia </p>
+</footer>
+
+
+
+<div id="7aa478c0-14a5-4eb8-a0ae-ea620faf903e-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

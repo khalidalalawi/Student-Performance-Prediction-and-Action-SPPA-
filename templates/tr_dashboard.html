@@ -1,0 +1,232 @@
+
+<!-- saved from url=(0113)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/tr_dashboard.html -->
+<html class=" kwugoqgqog idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <div class="container">
+      
+  
+ <h3 align="center"> <b> {{course_name_not_id}} ({{courseName}})  </b> </h3>  <br>
+ 
+  
+ 
+ {% for  i in labels %}
+  
+      {% endfor %}	  
+     
+   <table> 
+  <tbody><tr> 
+  <td>
+ <h3> Selected Assessment:  &nbsp; </h3> 
+ </td>  
+ <td> <h3> {{assessment_name_of_last_prediciton}} </h3>
+ </td>
+ 
+ </tr><tr>
+ <td>
+  <h3> Assessment Completed:  &nbsp;</h3>
+  </td><td> <h3>
+  		<a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;tr_dashboard_d2&#39;,%20my_var=i,%20my_var2=courseName)%20%7D%7D"><b> {{i}}</b> </a> 
+      	 &nbsp;&nbsp; </h3>
+</td></tr>
+   
+   </tbody></table>
+      
+      <h3 align="center"> Course Learnign Outcomes for {{assessment_name_of_last_prediciton}} </h3>
+      
+      
+      {% for  i in clo_assessment %}
+  		   
+      	                      
+      {% endfor %}
+      
+      
+      
+      
+     <table class="table table-striped" style="  width: 500px; text-align: left; margin-left: auto; margin-right: auto;">
+      <tbody><tr><th style="text-align: center;"> CLOs </th></tr><tr> <td>   {{loop.index}}- &nbsp;&nbsp;&nbsp;{{i}}  </td> </tr></tbody></table><table style="width: 100%; text-align: center; margin-left: auto; margin-right: auto;">
+  
+  <tbody><tr>
+  
+  <td style="width: 70%; margin-left:auto; white-space:nowrap; ">
+	<!-- Box Plot [block] -->
+    <div style="width:70%; height:100%; " id="boxplot"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+    <script>
+// bar chart data
+     // bar chart data
+      var y0 =[
+      {% for item in box %}
+       "{{ item }}",
+       
+      {% endfor %}
+    	]
+    	
+var trace1 = {
+  y: y0,
+  type: 'box',
+  name: '{{assessment_name_of_last_prediciton}}',
+  marker: {color: '#FF4136'}
+
+};
+
+var layout = {
+title: {
+    text:'Students Percentile on {{assessment_name_of_last_prediciton}}',
+    font: {
+      family: 'verdana',
+      size: 22
+    }},
+  yaxis: {
+    title: 'Students Percentile',
+    zeroline: false
+  }};
+
+
+var data = [trace1];
+
+Plotly.newPlot('boxplot', data, layout);
+
+</script>
+<!-- END OF Box Plot [block] -->
+	</td>
+	
+	<td>
+	
+	<h4 style=" margin-top:-60px; text-align: center; vertical-align: top;">Average Class Mark in each Assessment</h4>
+  
+  
+    <canvas id="chart" width="450" height="300"></canvas>
+    
+    <br>
+    <script> 
+      // bar chart data
+      var barData = {
+        labels : [
+          {% for item in labels %}
+           "{{ item }}",
+           
+          {% endfor %}
+	],
+
+        datasets : [{
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          data : [
+            {% for item in values %}
+               "{{ item }}",
+              {% endfor %}
+	    ]
+          }
+        ]
+      }
+
+     // get bar chart canvas
+     var mychart = document.getElementById("chart").getContext("2d");
+
+       steps = 10
+       max = {{max}}
+
+     // draw bar chart
+     new Chart(mychart).Bar(barData, {
+       scaleOverride: true,
+       scaleSteps: steps,
+       scaleStepWidth: Math.ceil(max / steps),
+       scaleStartValue: 0,
+       scaleShowVerticalLines: true,
+       scaleShowGridLines : true,
+       barShowStroke : true,
+       scaleShowLabels: true
+       }
+     );
+
+    </script> 
+	</td>
+	
+	
+	</tr>
+	
+	<tr>
+    
+	
+  
+  <td style="max-width:100%; vertical-align: top; white-space:nowrap;">
+	<br>
+	<h4 style="margin-top:0px;"> Number of Students who recieved 50% or less at each assessment    </h4> <br>
+     <canvas id="pie_chart" width="500" height="350" style="margin-left: 15px;"></canvas>
+    <script>
+      var pieData = [
+        {% for pie_values, pie_labels, colors in set %}
+          {
+            value: {{pie_values}},
+            label: "{{pie_labels}}",
+            color : "{{colors}}"
+          },
+        {% endfor %}
+      ];
+
+      // get Pie chart canvas
+      var mychart = document.getElementById("pie_chart").getContext("2d");
+      steps = 10
+      max = {{ max }}
+
+      // draw pie chart
+      new Chart(document.getElementById("pie_chart").getContext("2d")).Pie(pieData);
+
+    </script>
+	
+	</td>
+	
+	<td style="width:100%; vertical-align: top;"><br>
+	<h4 style="text-align: center; margin-left: 25px;"> Students At-Risk after {{assessment_name_of_last_prediciton}} (Binary/Multiclass)  prediction    </h4>
+    
+    
+  
+  		{% for  i in at_risk_std_name_and_id %}
+  		                        
+      {% endfor %}		
+     <table id="table_1" align="center" class="table table-striped" style="  width: 50%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>                                        		
+     			<th> Student Name </th>
+     			<th> Student ID </th>
+     			
+         </tr><tr> 		
+  		<td> <a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;tr_dashboard_d3_students_detail&#39;,%20my_var=i[0],%20my_var2=courseName)%20%7D%7D"><b> {{i[0]}} </b> </a>   </td>
+  		
+  		
+  		<td> {{i[1]}}  </td>
+  		
+  		</tr></tbody></table>
+    	</td>
+	
+    
+	
+	
+        
+	
+  </tr>
+	
+	<tr>
+	
+	
+	
+	
+	
+	
+	</tr>
+	
+	
+  
+</tbody></table>
+      
+   
+    
+    
+     </div>
+     
+      <br><br>
+    
+
+{% endblock %}
+<div id="019df4eb-f101-4804-b1e2-73bcc3184a7f-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

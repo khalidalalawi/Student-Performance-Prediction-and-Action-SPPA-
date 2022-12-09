@@ -1,0 +1,190 @@
+
+<!-- saved from url=(0112)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/predict_csv.html -->
+<html class=" njkmojbts idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <div class="container">
+
+        <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;predict_from_csv&#39;)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+            <h2>     Perform prediction </h2> <br>
+
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_name" required="">
+    		{% for    user in cityList %}
+            <option value="{{user[0]}}" selected=""> {{user[0]}}  [{{user[1]}}]   </option>
+    		{% endfor %}
+            </select>
+            <br><br>
+
+            <p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;check_models_performance&#39;)%7D%7D" target="_blank">check model performance here (will oppen new tab)</a></p>
+
+
+
+            <label style="width: 60%;">Please select ML algorithms for performing prediction [Binary Model]:</label><br>
+
+
+
+            <input type="radio" id="RF" name="ml_algorithm_binary" value="RF" checked="" required="">
+            <label style="font-weight: normal !important;" for="RF">Logistic Regression (LR)</label><br>
+
+            <input type="radio" id="SVM" name="ml_algorithm_binary" value="SVM">
+            <label style="font-weight: normal !important;" for="SVM">Support Vector Machine (SVM)</label><br>
+
+            <input type="radio" id="KNN" name="ml_algorithm_binary" value="KNN">
+            <label style="font-weight: normal !important;" for="KNN">K-Nearest-Neighbor (KNN)</label><br>
+
+            <input type="radio" id="NB" name="ml_algorithm_binary" value="NB">
+            <label style="font-weight: normal !important;" for="NB">Naive Bayes (NB)</label> <br>
+
+            <input type="radio" id="DT" name="ml_algorithm_binary" value="DT">
+            <label style="font-weight: normal !important;" for="DT">Decision Tree (DT)</label> <br><br>
+
+
+
+            <label style="width: 60%;">Please select ML algorithms for performing prediction [Multiclass Model]:</label><br>
+
+            <input type="radio" id="RF" name="ml_algorithm_multiclass" value="RF" checked="" required="">
+            <label style="font-weight: normal !important;" for="RF">Logistic Regression (LR)</label><br>
+
+            <input type="radio" id="SVM" name="ml_algorithm_multiclass" value="SVM">
+            <label style="font-weight: normal !important;" for="SVM">Support Vector Machine (SVM)</label><br>
+
+            <input type="radio" id="KNN" name="ml_algorithm_multiclass" value="KNN">
+            <label style="font-weight: normal !important;" for="KNN">K-Nearest-Neighbor (KNN)</label><br>
+
+            <input type="radio" id="NB" name="ml_algorithm_multiclass" value="NB">
+            <label style="font-weight: normal !important;" for="NB">Naive Bayes (NB)</label> <br>
+
+            <input type="radio" id="DT" name="ml_algorithm_multiclass" value="DT">
+            <label style="font-weight: normal !important;" for="DT">Decision Tree (DT)</label> <br><br>
+
+        	<label>Upload CSV File:</label> <br>
+            <input type="file" name="file" id="defaultContactFormName" required="required" class="form-control-file"> <br> <br>
+
+
+            <a href="https://i.ibb.co/7t3qM3V/example-predict.png" target="_blank">See an example of a CSV file format</a> <br><br>
+
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Submit</button>
+
+        	</form>
+
+        	<br>
+
+
+
+                <div id="prediction_result">
+
+
+               <h2 class="text-center border border-light p-5"> Results of the {{ML_used_binary}} Binary Model: </h2>
+
+               <div class="text-center border border-light p-5">
+
+                        
+
+                		{% for  i in prediction_text_binary %}
+                    		
+                        {% endfor %}
+                       <table class="table table-striped" style="width: 70%; text-align: left; margin-left: auto; margin-right: auto;">
+                            <tbody><tr>
+                            <th> Student Name </th>
+                			<th> Student ID </th>
+                			<th> Prediction Result (Pass <b>[1]</b> /Fail <b>[0]</b>) </th>
+                            </tr><tr>
+                    		<td>  {{data_only_std_Name_ID [loop.index -1  , 0 ]	}}	</td>
+                    		<td>  {{data_only_std_Name_ID [loop.index -1 , 1 ]	}}		</td>
+                    		<td> {{i}}  </td>
+                    		</tr></tbody></table>
+
+            	       <h2> Results of the {{ML_used_multiclass}}  Multiclass Model: </h2>
+
+                	   
+
+                		{% for  i in prediction_text_multiclass %}
+                    		
+                        {% endfor %}
+                      <table class="table table-striped" style="width: 70%; text-align: left; margin-left: auto; margin-right: auto;">
+                            <tbody><tr>
+                            <th> Student Name </th>
+                			<th> Student ID </th>
+                			<th> Prediction Result (Pass/Borderline/At-Risk) </th>
+                            </tr><tr>
+                    		<td>  {{data_only_std_Name_ID [loop.index -1 , 0 ]	}}	</td>
+                    		<td>  {{data_only_std_Name_ID [loop.index -1 , 1 ]	}}		</td>
+                    		<td> {{i}}  </td>
+                    		</tr></tbody></table>
+                      </div>
+
+                      <p id="date" style="width: auto; font-size: 10px; text-align: center; position: absolute; right: 17%;">9/12/2022</p> <br>
+<script>
+  n =  new Date();
+  y = n.getFullYear();
+  m = n.getMonth() + 1;
+  d = n.getDate();
+  document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+</script>
+
+            </div>
+                      <button id="btnExport" onclick="exportReportToExcel(this)" style="width: auto; font-size: 11px; text-align: center; position: absolute; right: 25%;  height: 25px;">Export Excel</button>
+                      <button style="width: auto; font-size: 11px; text-align: center; position: absolute; right: 17%;  height: 25px;" id="download"> Export pdf</button> <br><br>
+
+
+        </div>
+
+        <script>
+        window.onload = function () {
+    document.getElementById("download")
+        .addEventListener("click", () => {
+            const invoice = this.document.getElementById("prediction_result");
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename: 'Prediction Result.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+}
+         </script>
+
+ <script>
+
+function exportReportToExcel() {
+  let table = document.getElementsByTagName("table"); // you can use document.getElementById('tableId') as well by providing id to the table tag
+  TableToExcel.convert(table[0], { // html code may contain multiple tables so here we are refering to 1st table tag
+    name: `Prediction_Binary_Results.xlsx`, // fileName you could use any name
+    sheet: {
+      name: 'Binary_Results' // sheetName
+    }
+  });
+   TableToExcel.convert(table[1], { // html code may contain multiple tables so here we are refering to 1st table tag
+    name: `Prediction_Multiclass_Results.xlsx`, // fileName you could use any name
+    sheet: {
+      name: 'Multiclass_Results' // sheetName
+    }
+  })
+}
+
+</script>
+
+<script>
+
+// this for info button
+$('.info').popover();
+$(':not(#anything)').on('click', function (e) {
+    $('.info').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});
+
+</script>
+
+{% endblock %}<div id="aec51b1b-3cb0-4163-9925-a4df51ab009a-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

@@ -1,0 +1,165 @@
+
+<!-- saved from url=(0125)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/predict_csv_simple_first.html -->
+<html class=" sutmck idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <div class="container">
+
+        <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;predict_from_csv_simple&#39;)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+            <h2>     Perform prediction </h2> <br>
+
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_name" id="course">
+    		{% for    user in cityList %}
+            <option value="{{user[0]}}" selected=""> {{user[0]}}  [{{user[1]}}]   </option>
+    		{% endfor %}
+            </select>
+            <br><br>
+
+            <p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;predict_csv_first&#39;)%7D%7D">Advanced Options</a></p>
+
+
+        	<label>Upload CSV File: &nbsp;&nbsp;
+
+  <span class="title" style="color:#7499BF; font-style:italic; font-size:14px;"> Read me for instruction </span>
+
+  <a class="info" data-toggle="popover" data-placement="right" data-content="1- Please make sure make sure the first column in the uploaded csv file contains Students Names, the second colums contains Studens ID, and then assessments marks.
+2- Please make sure number of columns in the uploaded csv file is less than the number of assessments created in this course.
+3- Example:
+     Students Name | Students ID |
+     assessment 1 | assessment 2 | ...
+4- You can predict students performance after each assesssments students perform.
+5- Best machine learning algorithms will be choosen by defoult. If you want to choose different algorithms for prediction click on &#39;Advanced Option&#39;." title="Upload Data Instruction" data-original-title="Help here"></a>
+
+</label>
+
+        	<br>
+            <input type="file" name="file" id="defaultContactFormName" required="required" class="form-control-file"> <br> <br>
+
+
+            <a href="https://i.ibb.co/7t3qM3V/example-predict.png" target="_blank">See an example of a CSV file format</a> <br><br>
+
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Submit</button>
+
+
+
+             <br><br>
+                    <div id="show_assessments2" class="well" style="width: 60%; text-align: left; margin-left: auto; margin-right: auto;">
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+        </form>
+
+
+
+
+        </div>
+<script>
+// this for info button
+$('.info').popover();
+$(':not(#anything)').on('click', function (e) {
+    $('.info').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});
+
+   </script>
+
+<script>
+
+// this for info button
+$('.info').popover();
+$(':not(#anything)').on('click', function (e) {
+    $('.info').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});
+
+</script>
+
+
+<script>
+
+
+
+   ///////////////////////////////////////////////////////////////////////////////
+course_select = document.getElementById('course');
+div_select = document.getElementById('show_assessments2');
+
+course_select.onchange = function(){
+ course = course_select.value;
+ fetch('assessments55/' + course).then(function(response){
+  response.json().then(function(data) {
+   optionHTML = '';
+   //////////////////////////////////////////////////////////////////////
+
+   check_object_results=isEmptyObject(data.assessments_course)
+
+   if (check_object_results==true){
+   optionHTML ="NO assessments created for this course, please add assessments first then upload your data";
+   div_select.innerHTML =  optionHTML;
+
+   }
+   else
+   {
+   for (assessments of data.assessments_course) {
+    optionHTML +=  assessments.assessment_name + " <b>|</b> ";
+   }
+
+
+   div_select.innerHTML = '<b><span>&#9432;</span>  Please make sure the columns format and order of the csv file you want to upload for '+ assessments.course_course_id + ' look like this : </b> <br/> Students Name | Students ID | ' + optionHTML + '</br></br><b><span>&#9432;</span></b> Best machine learning algorithms will be chosen by default. If you want to choose different algorithms for prediction click on  <b> Advanced Option </b> </p>';
+
+
+
+   }
+   //////////////////////////////////////////////////////////////////////
+
+
+
+
+
+  });
+ });
+}
+
+
+// this function is to check if there is results come from the select satement frome above function (results)
+function isEmptyObject(value) {
+  return Object.keys(value).length === 0;
+}
+
+// execute the function when the page loads
+$(document).ready(course_select.onchange);
+
+// this is for the spinner when click submit button
+$(document).ready(function(){
+  $("#myform").on("submit", function(){
+    $("#pageloader").fadeIn();
+  });//submit
+});//document ready
+
+
+</script>
+
+{% endblock %}<div id="6e567cbc-1a47-4584-bd7b-9e3c0e9e2d25-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

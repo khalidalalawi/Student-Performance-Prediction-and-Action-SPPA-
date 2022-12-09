@@ -1,0 +1,273 @@
+
+<!-- saved from url=(0123)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/tr_dashboard_bar_chart.html -->
+<html class=" wwiupohc idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+<h3 align="center"> <b> {{course_name_not_id [0]}} ({{course_id}})  </b> </h3>
+
+<h3 align="center"> <b> Student Name: {{std_name}}  </b> </h3><br>
+ 
+
+<h3> &nbsp; Assessment Completed:  &nbsp;
+{% for  i in average_mark_of_each_assessment%}
+                 		
+<a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;tr_dashboard_d3_students_detail_2&#39;,%20my_var=i[1],%20my_var2=std_name%20)%20%7D%7D">{{i[1]}} </a> &nbsp;&nbsp;
+
+{% endfor %}   
+
+</h3> 
+
+<table style="width: 100%; text-align: center; margin-left: auto; margin-right: auto;">
+      <tbody><tr>
+    <td>
+      
+      
+      
+    <h3 style="width: 95%; text-align: center; margin-left: auto; margin-right: auto;">Assessments Grades</h3> <br><br>
+
+  
+    <canvas id="chart" width="400" height="290"></canvas>
+    
+    </td>
+    
+    <script> 
+      // bar chart data
+      var barData = {
+        labels : [
+          {% for item in labels %}
+           "{{ item }}",
+           
+          {% endfor %}
+	],
+
+        datasets : [{
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          data : [
+            {% for item in values %}
+               "{{ item }}",
+              {% endfor %}
+	    ]
+          }
+        ]
+      }
+
+     // get bar chart canvas
+     var mychart = document.getElementById("chart").getContext("2d");
+
+       steps = 10
+       max = {{max}}
+
+     // draw bar chart
+     new Chart(mychart).Bar(barData, {
+       scaleOverride: true,
+       scaleSteps: steps,
+       scaleStepWidth: Math.ceil(max / steps),
+       scaleStartValue: 0,
+       scaleShowVerticalLines: true,
+       scaleShowGridLines : true,
+       barShowStroke : true,
+       scaleShowLabels: true
+       }
+     );
+
+    </script>
+    
+    
+      <td style="width: 100%; ">
+      
+    
+    <!-- this block for achieved and unachieved mark bar chart -->
+    
+    <center>
+    <br><br>
+    <div style=" width: 100%;" id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+    </center>
+     
+    
+       
+    
+	<script>
+
+var total_lost='{{total_lost}}';
+
+var collected='{{collected}}';
+
+
+// bar chart data
+      var x_label =[
+      {% for item in labels %}
+       "{{ item }}",
+       
+      {% endfor %}, ''
+    	]
+    	
+var x_got =[
+      {% for item in got %}
+       "{{ item }}",
+       
+      {% endfor %}
+    	]    	
+    	
+var x_lost =[
+      {% for item in lost %}
+       "{{ item }}",
+       
+      {% endfor %}
+    	]    	
+    	
+    	   
+    	   
+var trace1 = {
+  x:x_label,
+      
+  y:x_got ,
+  name: 'achieved mark',
+  type: 'bar'
+};
+
+var trace2 = {
+  x: x_label,      
+  y: x_lost,
+  name: 'unachieved mark',
+  type: 'bar'
+};
+
+
+
+var data = [trace1, trace2];
+
+var layout = {title: {
+    text:'Achieved/ Unachieved Marks',
+    font: {
+      family: 'verdana',
+      size: 23
+    }}, barmode: 'stack'};
+
+Plotly.newPlot('myDiv', data, layout);
+
+</script>
+
+
+     <!-- END OF this block for achieved and unachieved mark bar chart -->
+     
+	</td> </tr>
+	
+	<tr>
+	<td style=" white-space:nowrap; ">
+	<br>
+	<h3 style="margin-top:-100px; width: 60%; text-align: center; margin-left: auto; margin-right: auto;"> Class Average Marks</h3>
+    
+  
+  		{% for  i in average_mark_of_each_assessment %}
+  		                        
+      {% endfor %}		
+     <table id="table_1" class="table table-striped" style="margin-top: 5px; width: 90%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>                                        		
+     			<th> Assessment Name </th>
+     			<th> Students Mark Avarage </th>
+     			
+         </tr><tr> 		
+  		     
+  		<td> <a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;tr_dashboard_d3_students_detail_2&#39;,%20my_var=i[1],%20my_var2=std_name%20)%20%7D%7D">{{i[1]}} </a> </td> 
+
+  		<td> {{i[0]}}%  </td>
+  		
+  		</tr></tbody></table>
+     
+     
+	</td>
+	
+	<td>
+	<br>
+	<h3 style="width: 95%; text-align: center; margin-left: auto; margin-right: auto;">Your Total Mark out of 100%</h3>
+	<canvas id="pie_chart" width="400" height="300"></canvas>
+    <script>
+      var pieData = [
+        {
+            value: {{lost2}},
+            label: "Total (100%)", 
+            color : "#ABCABC"
+ 
+          },
+          
+          {
+            value: {{collected}},
+            label:  "Your Total Mark",
+            color : "#46BFBD"
+ 
+          }
+          
+          
+          
+        
+      ];
+
+      // get Pie chart canvas
+      var mychart = document.getElementById("pie_chart").getContext("2d");
+      steps = 10
+      max = {{ max }}
+
+      // draw pie chart
+      new Chart(document.getElementById("pie_chart").getContext("2d")).Pie(pieData);
+
+    </script>
+    </td>
+    
+    
+    
+	
+	</tr><tr>
+	
+	
+	
+	<td colspan="2">
+	<br>
+	<h3 style="width: 70%; text-align: center; margin-left: auto; margin-right: auto;"> Your Revision plan for {{assessment_name_of_last_prediciton}}:</h3>
+   
+  
+                
+                		{% for  i in revision_plan %}
+                    		         
+                    		               
+                        {% endfor %}		
+                       <table id="table_1" class="table table-striped" style="width: 60%; text-align: left; margin-left: auto; margin-right: auto;">
+                            <tbody><tr>
+	               			
+                			<th> Activity Type </th>    
+                			<th> Activity Name </th>     			
+                			<th> Activity Topic </th>
+                			
+                			<th> Resources/ Reference Material </th>
+                			
+                            </tr><tr> 		
+                    		
+                    		<td> {{i[3]}}  </td>           
+                    		<td> {{i[4]}}  </td>
+                    		<td> {{i[2]}}  </td>
+                    		<td> {{i[5]}}  </td>
+                    		
+                    		</tr></tbody></table>
+  
+
+  
+		</td>
+		
+    </tr> 
+    
+    
+
+    </tbody></table>
+
+
+    
+    
+
+{% endblock %}
+ 
+
+
+
+
+<div id="71a58022-c29a-445b-a251-6546de179c69-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

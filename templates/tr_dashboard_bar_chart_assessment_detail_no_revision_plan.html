@@ -1,0 +1,52 @@
+
+<!-- saved from url=(0158)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/tr_dashboard_bar_chart_assessment_detail_no_revision_plan.html -->
+<html class=" noevkkd idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+<h4 style=" text-align: left; margin-left: auto; margin-right: auto;"><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;tr_dashboard_d3_students_detail&#39;,%20my_var3=std_name,%20my_var2=course_id)%20%7D%7D">Back to Students Dashboard </a></h4><h4>
+
+</h4><h3 style=" text-align: left; margin-left: auto; margin-right: auto;">Hello {{std_name}} <br> Course ID: {{course_id}}</h3>
+
+
+
+
+
+
+
+
+<table style="width: 100%; text-align: center; margin-left: auto; margin-right: auto;">
+  <tbody><tr>
+    <td colspan="2">
+    <br>
+	<h3 style=" text-align: center; margin-left: auto; margin-right: auto;">&nbsp; &nbsp; CLOs for {{assessment_name}}</h3>
+    
+
+  		{% for  i in clo_assessment %}
+  		
+      {% endfor %}
+     <table id="table_1" align="center" class="table table-striped" style="  width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>
+     			<th style=" text-align: center;"> CLOs </th>
+
+
+         </tr><tr>
+
+
+  		<td> <li>{{i[1]}}</li>  </td>
+
+  		</tr></tbody></table>
+
+	</td>
+
+
+  </tr>
+
+
+</tbody></table>
+
+
+ </div>
+
+{% endblock %}
+<div id="82cabd33-6209-4ccf-b984-1ff4eada7d35-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

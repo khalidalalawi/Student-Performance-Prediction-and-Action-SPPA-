@@ -1,0 +1,383 @@
+
+<!-- saved from url=(0114)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/bar_chart_pdf.html -->
+<html class=" eyizcwe idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+<br> <br>
+
+
+
+<div class="FixedHeightContainer">
+  <h4> Please Select Students you need to export their reports </h4>
+  <div style=" border-style: groove;" class="Content2">
+
+  
+{% for i in std_name_and_id_ %}
+
+
+
+{% endif %}
+
+
+{% endfor %}
+<table>
+<tbody><tr><td>
+
+&nbsp; <b></b>{{loop.index}} &nbsp;	<input type="checkbox" id="{{std_name_and_id_[loop.index-1,0]}}+3" name="{{std_name_and_id_[loop.index-1,0]}}+3" value="{{std_name_and_id_[loop.index-1,0]}}">
+<label style="  text-align: left;" for="{{std_name_and_id_[loop.index-1,0]}}">  {{std_name_and_id_[loop.index-1,1]}} ({{std_name_and_id_[loop.index-1,0]}}) </label> &nbsp;	&nbsp;	&nbsp;
+
+{% if(loop.index % 1 == 0) %}
+</td></tr>
+<tr></tr></tbody></table>
+
+  </div>
+</div>
+
+
+<br> <br>
+
+<button align="center" style="width: auto; font-size: 11px; text-align: center; position: absolute; right: 50%;  height: 25px;" id="download2"> Export Selected Students</button> <br><br>
+
+
+
+<br> <br> <hr>
+    {% set count = [0] %}
+    {% set count_pieChart = [0] %}
+
+
+
+
+      {% for i in std_id %}
+
+         <div id="{{i}}" style=" border-style: groove;">
+
+      <h3 style="text-align: center;"> {{course_name [0]}}  ({{course_id}})  </h3>
+
+      <h3 style="text-align: center;"> Student: {{std_name [count_pieChart[0]]}} ({{i}}) </h3>
+
+
+
+      <h3 style="text-align: center;"> <b> {{name_of_last_assessment}} </b> </h3>
+
+
+
+      <br><br>
+
+	{% for x in list_of_assessments_done %}
+
+
+
+   <table style="width: 100%; text-align: center; margin-left: auto; margin-right: auto;">
+
+
+
+
+     <tbody><tr>
+     <td colspan="2">
+     <h3 style="text-align: left;">&nbsp;&nbsp; <b> Your mark in {{name_of_last_assessment}}: {{unconverted_mark [loop.index-1]}}/{{mark_out_of[loop.index-1]}} ({{mark_percentage[loop.index-1]}}%) </b>  </h3><br>
+     </td>
+     </tr>
+
+     <tr>
+
+     <td>
+
+    <h3 style="width: 95%; text-align: center; margin-left: auto; margin-right: auto;">Your Assessments Grades</h3> <br><br>
+
+    <canvas id="{{i}}+1" width="400" height="290"></canvas>
+
+    </td>
+
+    <td>
+    <h3 style="width: 95%; text-align: center; margin-left: auto; margin-right: auto;">Your Achieved/Unachieved (Lost)/Remaining Marks out of 100%</h3>
+	<canvas id="{{i}}+2" width="300" height="250"></canvas>
+
+	<br>
+
+	<table id="table_1" align="center" class="table table-striped" style=" width: 65%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>
+     			<th style=" text-align: center;"> Achieved  </th>
+     			<th style=" text-align: center;"> Unachieved (Lost) </th>
+     			<th style=" text-align: center;"> Remaining  </th>
+
+
+         </tr>
+
+  		<tr>
+
+
+  		<td style=" text-align: center;"> {{achieved [count_pieChart[0]]}} </td>
+
+  		<td style=" text-align: center;"> {{unachieved [count_pieChart[0]]}} </td>
+
+  		<td style=" text-align: center;"> {{remained [count_pieChart[0]]}} </td>
+
+  		</tr>
+
+     </tbody></table>
+
+    <script>
+
+ var pieData = [
+        {
+
+            value: {{unachieved [count_pieChart[0]]}},
+            label: "Your Total Unachieved Mark",
+            color : "#ABCABC"
+
+          },
+
+          {
+            value: {{achieved [count_pieChart[0]]}},
+            label:  "Your Total Achieved Mark",
+            color : "#46BFBD"
+
+          },
+
+          {
+            value: {{remained [count_pieChart[0]]}},
+            label: "Your Total Remaining Mark",
+            color : "red"
+
+
+
+
+
+
+          },
+
+
+
+      ];
+
+
+
+
+
+      // get Pie chart canvas
+      var mychart = document.getElementById("{{i}}+2").getContext("2d");
+      steps = 10
+      max = {{ max }}
+
+      // draw pie chart
+      new Chart(document.getElementById("{{i}}+2").getContext("2d")).Pie(pieData);
+
+    </script>
+
+    </td>
+    </tr>
+
+
+
+
+
+
+
+
+
+	<tr>
+
+    <td colspan="2">
+
+    <h3 style=" text-align: center; margin-left: auto; margin-right: auto;">&nbsp; &nbsp; Course Learning Outcomes (CLOs) for the {{x}} are:</h3>
+    
+
+
+
+  		{% for  i in clo_assessment [x] %}
+  		
+      {% endfor %}
+     <table id="table_1" align="center" class="table table-striped" style=" width: 65%; text-align: left; margin-left: auto; margin-right: auto;"><tbody><tr>
+
+
+  		<td> <li>{{clo_assessment[x][loop.index-1,1]}}</li>  </td>
+
+  		</tr></tbody></table>
+
+     </td>
+
+     </tr>
+
+     <tr>
+     <td colspan="2">
+     <h3 style="width: 60%; text-align: center; margin-left: auto; margin-right: auto;"> Your Revision Plan for the {{x}} is:</h3>
+
+  
+
+
+                		{% for  i in d_revision_plan [x] %}
+
+
+                    		
+
+
+
+
+                        {% endfor %}
+
+                       <table id="table_1" class="table table-striped" style="width: 60%; text-align: left; margin-left: auto; margin-right: auto;">
+                            <tbody><tr>
+
+
+                			<th> Activity Type </th>
+                			<th> Activity Name </th>
+                			<th> Activity Topic </th>
+
+                			<th> Resources/ Reference Material </th>
+
+                            </tr><tr>
+                    		<td> {{d_revision_plan[x][loop.index-1,3]}}   </td>
+                    		<td> {{d_revision_plan[x][loop.index-1,4]}}   </td>
+                    		<td> {{d_revision_plan[x][loop.index-1,2]}}   </td>
+                    		<td> {{d_revision_plan[x][loop.index-1,5]}}   </td>
+
+                    		</tr></tbody></table>
+                       {% endfor %}
+
+            <br>
+
+		</td>
+    </tr>
+
+
+
+    <script>
+      // bar chart data
+      var barData = {
+        labels : [
+          {% for item in labels %}
+           "{{ item }}",
+
+          {% endfor %}
+	],
+
+        datasets : [{
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          data : [
+            {% for item in values [zero + count[0] : lenth_assessments + count[0]] %}
+               "{{ item }}",
+
+              {% endfor %}
+	    ]
+          }
+        ]
+      }
+
+     // get bar chart canvas
+     var mychart = document.getElementById("{{i}}+1").getContext("2d");
+
+       steps = 10
+       max = {{max}}
+
+     // draw bar chart
+     new Chart(mychart).Bar(barData, {
+       scaleOverride: true,
+       scaleSteps: steps,
+       scaleStepWidth: Math.ceil(max / steps),
+       scaleStartValue: 0,
+       scaleShowVerticalLines: true,
+       scaleShowGridLines : true,
+       barShowStroke : true,
+       scaleShowLabels: true
+       }
+     );
+
+    </script>
+
+
+
+    </tbody></table>
+
+      </div>
+
+      {% if count.append(count.pop() + lenth_assessments ) %}{% endif %} {# increment count by lenth_assessments #}
+
+      {% if count_pieChart.append(count_pieChart.pop() + 1 ) %}{% endif %} {# increment count by 1 #}
+
+
+      {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+// this for info button
+$('.info').popover();
+$(':not(#anything)').on('click', function (e) {
+    $('.info').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});
+
+</script>
+
+
+
+
+
+
+<script>
+
+        window.onload = function () {
+
+
+// all checkbox button
+        {% for i in std_id %}
+
+            document.getElementById("download2").addEventListener("click", () => {
+
+                    if (document.getElementById('{{i}}+3').checked) {
+
+                    const invoice = this.document.getElementById("{{i}}");
+                    console.log(invoice.checked);
+
+                    console.log(window);
+                    var opt = {
+                        margin: 0.01,
+                        filename: '{{i}}.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2 },
+                        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                    };
+                    html2pdf().from(invoice).set(opt).save();
+
+            }})
+
+        {% endfor %}
+
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+  {% endblock %}<div id="c90adf70-94aa-48b3-8609-305e0c910c10-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

@@ -1,0 +1,215 @@
+
+<!-- saved from url=(0111)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/update_m2m.html -->
+<html class=" fwfoqwfh idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+        <br>
+
+  <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;update_m2m_submit_btn&#39;,%20%20my_var2%20=%20count_allign_tla_to_clo_m_to_m_table,%20my_var5%20=%20count_allign_tla_to_at_m_to_m_table,%20my_var6%20=%20count_allign_at_to_clo_m_to_m_table%20)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+
+
+        <h3 align="center"> {{course_id}} </h3>
+
+
+
+
+    <h3 align="center"> Alignment of ATs to CLOs Table </h3> <br>
+     
+
+          {% set k = [0] %}
+  		{% for  i in allign_at_to_clo_m_to_m_table %}
+  		
+
+
+
+
+
+
+  		{% if k.append(k.pop() + 1 ) %}{% endif %} {# increment k by 1 #}
+
+  		
+      {% endfor %}
+     <table id="table_7" align="center" class="table table-striped" style=" width: 100%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>
+     			<th> ID </th>
+     			<th> Course Id </th>
+
+     			<th> Assessment Auto_inc. </th>
+     			<th> Assessment Name </th>
+
+     			<th> CLO Auto_inc. </th>
+     			<th> CLO Name </th>
+
+     			<th> Delete This </th>
+
+
+
+
+
+         </tr><tr>
+
+        <td> <input type="text" name="allign_at_to_clo_m_to_m_id{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[0]}}" readonly=""> </td>
+
+        <td> <input type="text" name="allign_at_to_clo_m_to_m_course_id{{k[0]}}" style="width: 120px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[3]}}" readonly=""> </td>
+
+  		<td> <input type="text" name="allign_at_to_clo_m_to_m_assessment_auto_increment{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[4]}}" readonly=""> </td>
+
+  		<td>
+      		<select name="allign_at_to_clo_m_to_m_assessment_name{{k[0]}}" style="width: 160px;">
+      		{% for    user in assessment_name %}
+
+        		<option value="{{user}}" selected=""> {{user}}  </option>
+
+        	{% endfor %}
+        	<option selected="selected">{{i[2]}} </option>
+            </select>
+        </td>
+
+
+
+      	<td> <input type="text" name="allign_at_to_clo_m_to_m_clo_auto_increment{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[5]}}" readonly=""> </td>
+
+  		<td>
+      		<select name="allign_at_to_clo_m_to_m_clo_name{{k[0]}}" style="width: 270px;">
+      		{% for    user in clo_name %}
+
+        		<option value="{{user}}" selected=""> {{user}}  </option>
+
+        	{% endfor %}
+        	<option selected="selected">{{i[1]}} </option>
+            </select>
+        </td>
+
+
+        <td>
+        <input type="checkbox" name="allign_at_to_clo_m_to_m_delete{{k[0]}}" value="delete_yes">
+        </td></tr></tbody></table>
+
+     <br><br>
+
+
+
+
+
+
+
+     <h3 align="center"> Alignment of TLAs to CLOs Table </h3> <br>
+     
+
+          {% set k = [0] %}
+  		{% for  i in allign_tla_to_clo_m_to_m_table %}
+  		
+
+
+  		{% if k.append(k.pop() + 1 ) %}{% endif %} {# increment k by 1 #}
+
+  		
+      {% endfor %}
+     <table id="table_2" align="center" class="table table-striped" style=" width: 100%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>
+     			<th> ID </th>
+     			<th> Course Id </th>
+     			<th> TLA Id </th>
+     			<th> Activity Name </th>
+
+     			<th> CLO Auto_inc. </th>
+     			<th> CLO Name </th>
+
+     			<th> Delete This </th>
+
+         </tr><tr>
+
+        <td> <input type="text" name="allign_tla_to_clo_m_to_m_id{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[0]}}" readonly=""> </td>
+
+        <td> <input type="text" name="allign_tla_to_clo_m_to_m_course_id{{k[0]}}" style="width: 120px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[4]}}" readonly=""> </td>
+
+  		<td> <input type="text" name="allign_tla_to_clo_m_to_m_tla_id{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[2]}}" readonly="">  </td>
+
+  		<td> <input type="text" name="allign_tla_to_clo_m_to_m_activity_name{{k[0]}}" style="width: 150px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[3]}}" readonly="">  </td>
+
+  		<td> <input type="text" name="allign_tla_to_clo_m_to_m_clo_auto_increment{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[5]}}" readonly="">  </td>
+
+  		<td>
+      		<select name="allign_tla_to_clo_m_to_m_clo_name{{k[0]}}" style="width: 260px;">
+      		{% for    user in clo_name %}
+
+        		<option value="{{user}}" selected=""> {{user}}  </option>
+
+        	{% endfor %}
+        	<option selected="selected">{{i[1]}} </option>
+            </select>
+        </td>
+
+        <td>
+        <input type="checkbox" name="allign_tla_to_clo_m_to_m_delete{{k[0]}}" value="delete_yes">
+        </td></tr></tbody></table>
+
+     <br><br>
+
+
+
+
+     <h3 align="center"> Alignment of TLAs to ATs Table </h3> <br>
+     
+
+          {% set k = [0] %}
+  		{% for  i in allign_tla_to_at_m_to_m_table %}
+  		
+
+
+  		{% if k.append(k.pop() + 1 ) %}{% endif %} {# increment k by 1 #}
+
+  		
+      {% endfor %}
+     <table id="table_5" align="center" class="table table-striped" style=" width: 100%; text-align: left; margin-left: auto; margin-right: auto;">
+         <tbody><tr>
+     			<th> ID </th>
+     			<th> Course Id </th>
+     			<th> TLA Id </th>
+     			<th> Activity Name </th>
+
+     			<th> Assessment Auto_inc </th>
+     			<th> Assessment Name </th>
+
+     			<th> Delete This </th>
+         </tr><tr>
+
+        <td> <input type="text" name="allign_tla_to_at_m_to_m_id{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[0]}}" readonly=""> </td>
+
+        <td> <input type="text" name="allign_tla_to_at_m_to_m_course_id{{k[0]}}" style="width: 120px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[4]}}" readonly=""> </td>
+
+  		<td> <input type="text" name="allign_tla_to_at_m_to_m_tla_id{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[2]}}" readonly="">  </td>
+
+  		<td> <input type="text" name="allign_tla_to_at_m_to_m_activity_name{{k[0]}}" style="width: 200px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[3]}}" readonly="">  </td>
+
+
+  		<td> <input type="text" name="allign_tla_to_at_m_to_m_assessment_auto_inc{{k[0]}}" style="width: 50px;" id="defaultContactFormName" class="form-control mb-4" value="{{i[5]}}" readonly="">  </td>
+
+  		<td>
+      		<select name="allign_tla_to_at_m_to_m_assessment_name{{k[0]}}" style="width: 170px;">
+      		{% for    user in assessment_name %}
+
+        		<option value="{{user}}" selected=""> {{user}}  </option>
+
+        	{% endfor %}
+        	<option selected="selected">{{i[1]}} </option>
+            </select>
+        </td>
+
+        <td>
+        <input type="checkbox" name="allign_tla_to_at_m_to_m_delete{{k[0]}}" value="delete_yes">
+        </td></tr></tbody></table>
+
+     <br><br>
+
+
+
+
+
+
+
+     <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">UPDATE</button> <br> <br><br><br>
+
+        </form>
+
+{% endblock %}<div id="60e18912-227b-4652-b261-557395eae51b-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

@@ -1,0 +1,112 @@
+
+<!-- saved from url=(0136)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/create_clo_after_adding_assessments.html -->
+<html class=" nehtmlwe idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        
+        <div class="container">
+            
+        
+      
+      
+      
+      <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;create_clo&#39;)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+
+            <h2>     Create CLO </h2> 
+      <div class="well" style="padding-top: 2px; padding-left: 2px; padding-right: 2px; padding-bottom: 2px; width: 50%; text-align: left; margin-left: auto; margin-right: auto;">                
+      <h5 style="text-align: center;">Thank you, your CLO is added successfully.</h5>      
+      </div>
+            
+        
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_course_id" id="course" required="required">	
+    		
+    		
+            <option value="{{cityList [0]}}" selected=""> {{cityList [0]}}   </option>
+    		
+            </select>
+            <br><br>
+        
+           
+        	<label>CLO name:</label> <br>
+            <input type="text" name="clo_name" required="required" id="defaultContactFormName" class="form-control mb-4" placeholder="CLO Name"> <br><br>
+            
+            <label>CLO Level:</label> <br>
+            <input type="number" min="0" max="20" name="clo_level" required="required" id="defaultContactFormName" class="form-control mb-4" placeholder="CLO Level"> <br><br>
+           
+            <label for="courses">Parent CLO:</label><br>
+			<select name="parent_clo" id="clo">	
+    		
+    		{% for    user in parent_clo_db %}
+    		
+            <option value="{{user[0]}}" selected=""> {{user[0]}}  [Level: {{user[2]}}]  </option>
+            
+    		{% endfor %}
+    		<option value="None" selected="">None</option>
+            </select>
+            <br><br>
+            
+           
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Insert</button> <br> <br>
+        	<button class="btn btn-info btn-block" style="width: 50%" type="reset" name="reset" value="Reset">Reset</button>   <br><br>
+        	
+        	
+        	
+        	<div id="show_assessments" class="well" style="width: 50%; text-align: left; margin-left: auto; margin-right: auto;">
+        
+            </div>
+            <br> <br>
+        </form>
+        
+        </div>
+      
+      
+<script>
+        
+//***********************************************************************************************************
+course_select = document.getElementById('course');
+div_select = document.getElementById('show_assessments');
+
+course_select.onchange = function(){
+ course = course_select.value;
+ fetch('clo/' + course).then(function(response){
+  response.json().then(function(data) {
+   optionHTML = '';
+   
+   check_object_results=isEmptyObject(data.assessments_course)   
+   
+   if (check_object_results==true){
+   optionHTML ="There are no CLO created yet for this course";
+   div_select.innerHTML =  optionHTML;
+    
+   }
+   else
+   {
+   for (assessments of data.assessments_course) {
+    optionHTML += '<option value="' + assessments.assessment_name +'">' + assessments.assessment_name + '</option>'
+   }
+   
+   div_select.innerHTML = '<b> CLOs stored for '+ assessments.course_course_id +': </b> <br/>' + optionHTML;
+   
+   }
+          
+  });
+ });
+}
+
+
+// this function is to check if there is results come from the select satement frome above function (results)
+function isEmptyObject(value) {
+  return Object.keys(value).length === 0;
+}
+
+//***********************************************************************************************************            
+
+// execute the function when the page loads
+$(document).ready(course_select.onchange);
+</script>
+
+      
+{% endblock %}
+<div id="f7f829de-928a-44a4-813a-a56cfc993d29-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

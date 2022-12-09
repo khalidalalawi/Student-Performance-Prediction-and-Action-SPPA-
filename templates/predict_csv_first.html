@@ -1,0 +1,129 @@
+
+<!-- saved from url=(0118)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/predict_csv_first.html -->
+<html class=" zykutifed idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+        <div class="container">
+
+        <form action="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7B%20url_for(&#39;predict_from_csv&#39;)%7D%7D" method="post" enctype="multipart/form-data" class="text-center border border-light p-5">
+            <h2>     Perform prediction </h2>
+
+            <label for="courses">Choose a course:</label><br>
+			<select name="course_name">
+    		{% for    user in cityList %}
+            <option value="{{user[0]}}" selected=""> {{user[0]}}  [{{user[1]}}]   </option>
+    		{% endfor %}
+            </select>
+            <br><br>
+
+            <p><a href="https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/%7B%7Burl_for(&#39;check_models_performance&#39;)%7D%7D" target="_blank">check model performance here (will oppen new tab)</a></p>
+
+
+
+            <label style="width: 60%;">Please select ML algorithms for performing prediction [Binary Model]:</label><br>
+
+
+
+            <input type="radio" id="RF" name="ml_algorithm_binary" value="RF" checked="" required="">
+            <label style="font-weight: normal !important;" for="RF">Logistic Regression (LR)</label><br>
+
+            <input type="radio" id="SVM" name="ml_algorithm_binary" value="SVM">
+            <label style="font-weight: normal !important;" for="SVM">Support Vector Machine (SVM)</label><br>
+
+            <input type="radio" id="KNN" name="ml_algorithm_binary" value="KNN">
+            <label style="font-weight: normal !important;" for="KNN">K-Nearest-Neighbor (KNN)</label><br>
+
+            <input type="radio" id="NB" name="ml_algorithm_binary" value="NB">
+            <label style="font-weight: normal !important;" for="NB">Naive Bayes (NB)</label> <br>
+
+            <input type="radio" id="DT" name="ml_algorithm_binary" value="DT">
+            <label style="font-weight: normal !important;" for="DT">Decision Tree (DT)</label> <br><br>
+
+
+
+            <label style="width: 60%;">Please select ML algorithms for performing prediction [Multiclass Model]:</label><br>
+
+            <input type="radio" id="RF" name="ml_algorithm_multiclass" value="RF" checked="" required="">
+            <label style="font-weight: normal !important;" for="RF">Logistic Regression (LR)</label><br>
+
+            <input type="radio" id="SVM" name="ml_algorithm_multiclass" value="SVM">
+            <label style="font-weight: normal !important;" for="SVM">Support Vector Machine (SVM)</label><br>
+
+            <input type="radio" id="KNN" name="ml_algorithm_multiclass" value="KNN">
+            <label style="font-weight: normal !important;" for="KNN">K-Nearest-Neighbor (KNN)</label><br>
+
+            <input type="radio" id="NB" name="ml_algorithm_multiclass" value="NB">
+            <label style="font-weight: normal !important;" for="NB">Naive Bayes (NB)</label> <br>
+
+            <input type="radio" id="DT" name="ml_algorithm_multiclass" value="DT">
+            <label style="font-weight: normal !important;" for="DT">Decision Tree (DT)</label> <br><br>
+
+        	<label>Upload CSV File: &nbsp;&nbsp;
+
+  <span class="title" style="color:#7499BF; font-style:italic; font-size:14px;"> Read me for instruction </span>
+
+  <a class="info" data-toggle="popover" data-placement="right" data-content="1- Please make sure make sure the first column in the uploaded csv file contains Students Names, the second colums contains Studens ID, and then assessments marks.
+2- Please make sure number of columns in the uploaded csv file is less than the number of assessments created in this course.
+3- Example:
+     Students Name | Students ID |
+     assessment 1 | assessment 2 | ...
+4- You can predict students performance after each assesssments students perform.
+5- Best machine learning algorithms will be choosen by defoult. If you want to choose different algorithms for prediction click on &#39;Advanced Option&#39;." title="Upload Data Instruction" data-original-title="Help here"></a>
+
+</label>
+ <br>
+            <input type="file" name="file" id="defaultContactFormName" required="required" class="form-control-file"> <br>
+
+
+            <a href="https://i.ibb.co/7t3qM3V/example-predict.png" target="_blank">See an example of a CSV file format</a> <br><br>
+
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Insert">Submit</button>
+
+
+        	  <br><br><br>
+
+
+
+
+        </form>
+
+
+
+
+        </div>
+
+<script>
+// this for info button
+$('.info').popover();
+$(':not(#anything)').on('click', function (e) {
+    $('.info').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});
+
+   </script>
+
+
+<script>
+
+// this for info button
+$('.info').popover();
+$(':not(#anything)').on('click', function (e) {
+    $('.info').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});
+
+</script>
+{% endblock %}<div id="fbe87958-badf-4568-8279-dcc62ae5e29f-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

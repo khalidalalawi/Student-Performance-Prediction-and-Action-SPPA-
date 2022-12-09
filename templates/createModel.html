@@ -1,0 +1,123 @@
+
+<!-- saved from url=(0112)https://www.pythonanywhere.com/user/studentPrediction/files/home/studentPrediction/51/templates/createModel.html -->
+<html class=" tojtegrd idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css"></style></head><body data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">{% extends "base.html" %}
+{% block content %}
+
+
+        <div class="container">
+
+        <div id="pageloader">
+
+           <img src="./createModel_files/loader-large.gif" alt="processing...">
+           <h3 class="well">  Please wait until it finish. Do not refresh the page <br> It may take several minutes to complete  </h3>
+
+        </div>
+
+      <form class="text-center border border-light p-5" method="post" id="myform">
+
+
+
+            <h2>     Create Models  </h2> <br>
+
+            <label for="courses">Upload CSV File:&nbsp;&nbsp;
+              <span class="title" style="color:#7499BF;  font-size:14px;"> Read me </span>
+              <a class="info" data-toggle="popover" data-placement="right" data-content="When click on &#39;Create Button&#39;, five Models will be created using five ML algorithms (RF, SVM, DT, KNN, and NB" title="Create Button" data-original-title="Help here">zz</a>
+
+            </label>
+
+            <br>
+			<select name="course_name" id="course" required="required">
+    		{% for    user in cityList %}
+
+            <option value="{{user[0]}}" selected=""> {{user[0]}}  [{{user[1]}}]   </option>
+    		{% endfor %}
+            </select>
+            <br><br>
+
+
+
+            <!-- Send button -->
+            <button class="btn btn-info btn-block" style="width: 50%; " type="submit" name="submit" value="Create">Create</button> <br> <br><br>
+
+
+        	<div id="show_assessments" class="well" style="width: 50%; text-align: left; margin-left: auto; margin-right: auto;">
+
+            </div>
+        </form>
+
+        </div>
+
+ <script>
+course_select = document.getElementById('course');
+div_select = document.getElementById('show_assessments');
+
+course_select.onchange = function(){
+ course = course_select.value;
+ fetch('check_creat_model/' + course).then(function(response){
+  response.json().then(function(data) {
+   optionHTML = '';
+   //alert(typeof(data.assessments_course));
+
+
+
+   check_object_results=isEmptyObject(data.assessments_course)
+
+   //alert(check_object_results);
+
+   if (check_object_results==true){
+   optionHTML ="NO ML models exist for this course";
+   div_select.innerHTML =  optionHTML;
+
+   }
+   else
+   {
+
+   optionHTML = "Five ML models exist for this course which are: <br> [LR, SVM, NB, KNN, and DT]";
+   div_select.innerHTML =  optionHTML;
+   }
+
+
+
+
+
+
+  });
+ });
+}
+
+
+// this function is to check if there is results come from the select satement frome above function (results)
+function isEmptyObject(value) {
+  return Object.keys(value).length === 0;
+}
+
+// execute the function when the page loads
+$(document).ready(course_select.onchange);
+
+// this is for the spinner when click submit button
+$(document).ready(function(){
+  $("#myform").on("submit", function(){
+    $("#pageloader").fadeIn();
+  });//submit
+});//document ready
+
+
+
+// this for info button
+$('.info').popover();
+$(':not(#anything)').on('click', function (e) {
+    $('.info').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons and other elements within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+            return;
+        }
+    });
+});
+
+</script>
+
+
+
+{% endblock %}<div id="a9622c83-770c-4ec1-8abf-ea5955276ba8-quickmenu"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
